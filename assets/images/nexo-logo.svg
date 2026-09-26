@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="100%">
+  <defs>
+    <!-- Gradients for realistic 3D architectural facets -->
+    <linearGradient id="facetWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6deeb"/>
+    </linearGradient>
+
+    <linearGradient id="facetRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4757"/>
+      <stop offset="100%" stop-color="#d61b2c"/>
+    </linearGradient>
+
+    <linearGradient id="facetRedDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d61b2c"/>
+      <stop offset="100%" stop-color="#8a0c17"/>
+    </linearGradient>
+
+    <linearGradient id="facetCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#0099ff"/>
+    </linearGradient>
+
+    <linearGradient id="facetBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0080ff"/>
+      <stop offset="100%" stop-color="#0044cc"/>
+    </linearGradient>
+
+    <linearGradient id="barRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#ff2b3e"/>
+    </linearGradient>
+
+    <linearGradient id="barBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0066ff"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="glowMark" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- GEOMETRIC EMBLEM (N Shape / Construction Facets) -->
+  <g filter="url(#glowMark)" transform="translate(100, 20)">
+    <!-- Left Column (White/Silver) -->
+    <polygon points="60,110 95,80 95,30 60,60" fill="url(#facetWhite)"/>
+    <polygon points="95,80 145,115 145,70 95,30" fill="#f0f4f8"/>
+    
+    <!-- Central Red Diagonal / Roof -->
+    <polygon points="145,70 190,30 225,60 180,100" fill="url(#facetRed)"/>
+    <polygon points="180,100 225,60 225,95 180,135" fill="url(#facetRedDark)"/>
+
+    <!-- Right Cyan/Blue Structure -->
+    <polygon points="95,125 145,85 180,110 130,150" fill="url(#facetCyan)"/>
+    <polygon points="130,150 180,110 215,135 165,175" fill="url(#facetBlue)"/>
+  </g>
+
+  <!-- NEXO WORDMARK -->
+  <text x="250" y="245" 
+        font-family="'Michroma', 'Syne', sans-serif" 
+        font-size="64" 
+        font-weight="900" 
+        letter-spacing="0.28em" 
+        fill="#ffffff" 
+        text-anchor="middle">NEXO</text>
+
+  <!-- SUBTITLE WITH RED & BLUE BARS -->
+  <g transform="translate(0, 275)">
+    <!-- Red Left Bar -->
+    <line x1="60" y1="0" x2="140" y2="0" stroke="#ff2b3e" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Text -->
+    <text x="250" y="3" 
+          font-family="'Michroma', sans-serif" 
+          font-size="11" 
+          font-weight="700" 
+          letter-spacing="0.28em" 
+          fill="#94a3b8" 
+          text-anchor="middle">SISTEMAS CONSTRUCTIVOS</text>
+    
+    <!-- Blue Right Bar -->
+    <line x1="360" y1="0" x2="440" y2="0" stroke="#0066ff" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
