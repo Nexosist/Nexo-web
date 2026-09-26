@@ -522,6 +522,11 @@
         <input type="text" id="input-qr-url" class="field-input" value="https://nexosist.github.io/Nexo-web/">
       </div>
 
+      <div class="field-group">
+        <label class="field-label" for="input-pill4">Especialidad 4 (Insignia)</label>
+        <input type="text" id="input-pill4" class="field-input" value="TERMINACIONES">
+      </div>
+
       <!-- Action Buttons -->
       <button type="button" class="btn-action-primary" onclick="window.print()">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
@@ -594,7 +599,7 @@
                 <span class="service-pill">STEEL FRAMING</span>
                 <span class="service-pill">PLACAS DE YESO</span>
                 <span class="service-pill">CIELORRASOS</span>
-                <span class="service-pill">LLAVE EN MANO</span>
+                <span class="service-pill" id="pill-4">TERMINACIONES</span>
               </div>
             </div>
 
@@ -641,6 +646,9 @@
       displayEmail.textContent = inputEmail.value || '';
       displayWeb.textContent = inputWeb.value || '';
       displayLocation.textContent = inputLocation.value || '';
+      if (document.getElementById('pill-4')) {
+        document.getElementById('pill-4').textContent = (document.getElementById('input-pill4')?.value || 'TERMINACIONES').toUpperCase();
+      }
     }
 
     function generateQr() {
@@ -662,6 +670,8 @@
     inputWeb.addEventListener('input', updatePreview);
     inputLocation.addEventListener('input', updatePreview);
     inputQrUrl.addEventListener('input', generateQr);
+    const inputPill4 = document.getElementById('input-pill4');
+    if (inputPill4) inputPill4.addEventListener('input', updatePreview);
 
     // Initial render
     updatePreview();
