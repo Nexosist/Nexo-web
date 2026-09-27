@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const message = `¡Hola NEXO Sistemas Constructivos! Mi nombre es ${clientName}. Me comunico desde la web para solicitar presupuesto formal:%0A%0A📌 *Servicio:* ${serviceName}%0A📐 *Superficie estimada:* ${area} m²%0A📍 *Ubicación:* ${location}%0A%0A¿Podríamos coordinar un relevamiento o asesoramiento técnico? Muchas gracias!`;
       
-      const whatsappUrl = `https://wa.me/5493757000000?text=${message}`;
+      const whatsappUrl = `https://wa.me/5493757679600?text=${message}`;
       window.open(whatsappUrl, '_blank');
     });
   }
@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'FN:NEXO Sistemas Constructivos',
         'ORG:NEXO Sistemas Constructivos',
         'TITLE:Construcción en Seco y Steel Frame',
-        'TEL;TYPE=WORK,VOICE,pref:+54 9 3757 000000',
-        'TEL;TYPE=CELL,WHATSAPP:+5493757000000',
+        'TEL;TYPE=WORK,VOICE,pref:+54 9 3757 679600',
+        'TEL;TYPE=CELL,WHATSAPP:+5493757679600',
         'EMAIL;TYPE=PREF,INTERNET:info@nexosistemas.com.ar',
         'URL:https://www.nexosistemas.com.ar',
         'ADR;TYPE=WORK:;;Puerto Libertad;Misiones;;;Argentina',
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalObraArea.textContent = data.area;
         modalObraSystem.textContent = data.system;
         modalObraDesc.textContent = data.desc;
-        modalObraWsLink.href = `https://wa.me/5493757000000?text=Hola%20NEXO!%20Me%20interesó%20mucho%20el%20proyecto%20"${encodeURIComponent(data.title)}"%20(${data.location}).%20Quisiera%20consultar%20por%20una%20obra%20similar.`;
+        modalObraWsLink.href = `https://wa.me/5493757679600?text=Hola%20NEXO!%20Me%20interesó%20mucho%20el%20proyecto%20"${encodeURIComponent(data.title)}"%20(${data.location}).%20Quisiera%20consultar%20por%20una%20obra%20similar.`;
         openModal(modalObra);
       }
     });
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('contact-msg').value;
 
       const wsMsg = `Hola NEXO! Mi nombre es ${name} (Tel: ${phone}).%0A%0A${encodeURIComponent(message)}`;
-      window.open(`https://wa.me/5493757000000?text=${wsMsg}`, '_blank');
+      window.open(`https://wa.me/5493757679600?text=${wsMsg}`, '_blank');
       contactForm.reset();
     });
   }
