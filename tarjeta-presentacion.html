@@ -519,7 +519,7 @@
 
       <div class="field-group">
         <label class="field-label" for="input-web">Dirección Web</label>
-        <input type="text" id="input-web" class="field-input" value="nexosist.github.io/Nexo-web">
+        <input type="text" id="input-web" class="field-input" value="www.nexosistemas.com.ar">
       </div>
 
       <div class="field-group">
@@ -529,7 +529,7 @@
 
       <div class="field-group">
         <label class="field-label" for="input-qr-url">URL Destino del QR</label>
-        <input type="text" id="input-qr-url" class="field-input" value="https://nexosist.github.io/Nexo-web/">
+        <input type="text" id="input-qr-url" class="field-input" value="https://www.nexosistemas.com.ar/">
       </div>
 
       <div class="field-group">
@@ -599,7 +599,7 @@
                 </div>
                 <div class="back-contact-item">
                   <span class="contact-item-icon">🌐</span>
-                  <span id="display-web">nexosist.github.io/Nexo-web</span>
+                  <span id="display-web">www.nexosistemas.com.ar</span>
                 </div>
                 <div class="back-contact-item">
                   <span class="contact-item-icon">📍</span>
@@ -666,7 +666,7 @@
     }
 
     function generateQr() {
-      const url = inputQrUrl.value || 'https://nexosist.github.io/Nexo-web/';
+      const url = inputQrUrl.value || 'https://www.nexosistemas.com.ar/';
       if (window.QRCodeRenderer) {
         window.QRCodeRenderer.renderCanvas(qrCanvas, url, {
           size: 260,
