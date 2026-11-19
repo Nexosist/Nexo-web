@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.querySelector('.mobile-toggle');
   const themeToggle = document.getElementById('theme-toggle');
   const navLinks = document.querySelectorAll('.nav-link');
-  const norm = (p) => p.replace(/index\.html$/, '');
+  const norm = (p) => p.replace(/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
 
   // ---------------------------------------------------------------- Tema
   function applyTheme(theme) {
@@ -529,6 +529,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------------------------------------------------------- Clics: contacto, enlaces internos y cambio de página
   const spaEnabled = !document.querySelector('meta[name="robots"][content="noindex"]');
+  // dirección prolija en la barra: sin index.html ni .html (solo en http, no al abrir el archivo suelto)
+  (function () {
+    if (!/^https?:$/.test(window.location.protocol) || !window.history || !window.history.replaceState) return;
+    const p = window.location.pathname;
+    const clean = p.replace(/index\.html$/, '').replace(/\.html$/, '');
+    if (clean !== p) window.history.replaceState(window.history.state, '', clean + window.location.search + window.location.hash);
+  })();
   let currentPath = window.location.pathname;
   const cache = new Map();
   let navigating = false;

@@ -36,6 +36,7 @@ Estos archivos quedan en la carpeta, pero `.gitignore` los excluye para que no s
 - Modo claro y oscuro. La primera vez sigue la configuración del dispositivo y después recuerda la elección.
 - Menú que se esconde al bajar y aparece al subir.
 - Botón flotante de WhatsApp en todas las páginas.
+- Direcciones prolijas: `/`, `/nosotros` y `/contacto`, sin `.html`. Los enlaces, el `canonical` y el `sitemap.xml` usan esas direcciones, y `js/main.js` acorta la barra si alguien entra por `index.html` o `contacto.html`. GitHub Pages sirve las direcciones sin `.html`; en Vercel hay que poner `"cleanUrls": true` en `vercel.json`.
 - Animaciones al hacer scroll, que se desactivan si el dispositivo pide menos movimiento. El scroll es el del navegador.
 - Para buscadores: título y descripción propios en cada página, dirección principal (canonical) apuntando al dominio oficial, datos para redes (Open Graph), datos estructurados del negocio, `sitemap.xml` y `robots.txt`.
 
