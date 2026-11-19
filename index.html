@@ -1,804 +1,786 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>NEXO | Sistemas Constructivos - Construcción en Seco y Steel Frame</title>
-  
-  <!-- SEO & Social Meta -->
-  <meta name="description" content="NEXO Sistemas Constructivos. Expertos en Steel Framing, Cielorrasos, Tabiques de Yeso y Soluciones Llave en Mano en Puerto Libertad, Misiones y alrededores.">
-  <meta name="keywords" content="Steel Frame, Construcción en Seco, Cielorrasos, Durlock, Placas de Yeso, Misiones, Puerto Libertad, Arquitectura, Remodelaciones">
-  <meta property="og:title" content="NEXO Sistemas Constructivos | Construimos Soluciones">
-  <meta property="og:description" content="Soluciones constructivas en seco con eficiencia, calidad y ejecución profesional en Misiones.">
-  <meta property="og:image" content="assets/images/hero_bg.jpg">
+
+  <!-- Tema: se define antes de pintar para evitar el parpadeo -->
+  <script>
+    (function () {
+      var theme = 'dark';
+      try {
+        theme = localStorage.getItem('nexo-theme') ||
+          (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('reveal-ready');
+          setTimeout(function () {
+            if (!window.__nexoReady) document.documentElement.classList.remove('reveal-ready');
+          }, 4000);
+        }
+      } catch (e) {}
+      try {
+        if (sessionStorage.getItem('nexo-seen')) {
+          document.documentElement.classList.add('no-intro');
+        } else {
+          sessionStorage.setItem('nexo-seen', '1');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <meta name="description" content="NEXO Sistemas Constructivos. Construcción en seco, Steel Frame, cielorrasos, tabiques de yeso y molduras en Puerto Libertad, Misiones y la región.">
+  <meta name="keywords" content="Steel Frame, Construcción en Seco, Cielorrasos, Placas de Yeso, Misiones, Puerto Libertad, Remodelaciones">
+  <meta property="og:title" content="NEXO | Sistemas Constructivos - Construcción en Seco y Steel Frame">
+  <meta property="og:description" content="Construcción en seco y Steel Frame en Misiones. Qué diferencia hay con la construcción en húmedo y por qué conviene.">
+  <meta property="og:image" content="https://www.nexosistemas.com.ar/assets/images/og-image.jpg">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/images/favicon-light.png?v=3" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=3">
+  <meta name="theme-color" content="#0d0e10">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preload" as="image" href="assets/images/hero_steelframe.jpg">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://www.nexosistemas.com.ar/">
+  <meta property="og:url" content="https://www.nexosistemas.com.ar/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "NEXO Sistemas Constructivos",
+    "url": "https://www.nexosistemas.com.ar/",
+    "logo": "https://www.nexosistemas.com.ar/assets/images/logo.png",
+    "image": "https://www.nexosistemas.com.ar/assets/images/og-image.jpg",
+    "telephone": "+5493757679600",
+    "email": "info@nexosistemas.com.ar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Puerto Libertad",
+      "addressRegion": "Misiones",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/style.css?v=dd63a6ba">
 </head>
 <body>
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <!-- Iconos reutilizables -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></g></symbol>
+    <symbol id="i-steps" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/></g></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+  </svg>
+
+
+  <!-- ==================== HEADER ==================== -->
   <header class="site-header" id="header">
     <div class="header-container">
-      <!-- Brand Logo -->
-      <a href="#inicio" class="header-logo" aria-label="NEXO Sistemas Constructivos">
-        <img src="assets/images/logo.png" alt="NEXO Sistemas Constructivos" class="site-header-logo">
+      <button type="button" class="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      <a href="index.html" class="header-logo" aria-label="NEXO Sistemas Constructivos, inicio">
+        <img width="400" height="200" src="assets/images/logo-small.png" alt="NEXO Sistemas Constructivos" class="site-header-logo">
+        <img width="400" height="200" src="assets/images/logo-light-small.png" alt="" aria-hidden="true" class="site-header-logo logo-for-light">
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="header-nav" id="main-nav">
-        <a href="#inicio" class="nav-link active">Inicio</a>
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#obras" class="nav-link">Obras</a>
-        <a href="#nosotros" class="nav-link">Nosotros</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+      <nav class="header-nav" id="main-nav" aria-label="Principal">
+        <a href="index.html" class="nav-link active" aria-current="page"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Inicio</span></a>
+        <a href="nosotros.html" class="nav-link"><svg aria-hidden="true"><use href="#i-users"/></svg><span>Nosotros</span></a>
+        <a href="contacto.html" class="nav-link"><svg aria-hidden="true"><use href="#i-mail"/></svg><span>Contacto</span></a>
+        <div class="nav-contact">
+          <a class="nav-contact-btn nav-contact-wa" href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Vi%20su%20p%C3%A1gina%20y%20quiero%20consultar%20por%20una%20obra." target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a class="nav-contact-btn nav-contact-mail" href="mailto:info@nexosistemas.com.ar">
+            <svg aria-hidden="true"><use href="#i-mail"/></svg>
+            <span>Correo</span>
+          </a>
+        </div>
       </nav>
 
-      <!-- CTA WhatsApp -->
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Quisiera%20hacerles%20una%20consulta." target="_blank" rel="noopener noreferrer" class="header-cta-btn" id="header-whatsapp-cta">
-          <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
-          <span>Escribinos</span>
-        </a>
+      <div class="header-actions">
 
-        <!-- Mobile Toggle Button -->
-        <button class="mobile-toggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Cambiar a modo claro">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION ==================== -->
-  <section class="hero-section" id="inicio">
+  <main id="contenido" data-wa-text="Hola NEXO! Vi su página y quiero consultar por una obra.">
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-top" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.12"/><stop offset="1" stop-color="#fff" stop-opacity="0.45"/></linearGradient>
+      <linearGradient id="g-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0.2"/><stop offset="1" stop-color="#000" stop-opacity="0.42"/></linearGradient>
+      <linearGradient id="g-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0.04"/><stop offset="1" stop-color="#000" stop-opacity="0.22"/></linearGradient>
+    </defs>
+  </svg>
+
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="gd-g-conc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a8e92"/><stop offset="1" stop-color="#70747a"/></linearGradient>
+<linearGradient id="gd-g-steel-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0d3d7"/><stop offset="1" stop-color="#b6b9bd"/></linearGradient>
+<linearGradient id="gd-g-steel-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#adafb2"/><stop offset="1" stop-color="#959699"/></linearGradient>
+<linearGradient id="gd-g-steel-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#929599"/><stop offset="1" stop-color="#7b7d81"/></linearGradient>
+<linearGradient id="gd-g-steel2-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dee0e3"/><stop offset="1" stop-color="#c4c6c8"/></linearGradient>
+<linearGradient id="gd-g-steel2-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7cace"/><stop offset="1" stop-color="#aeb0b4"/></linearGradient>
+<linearGradient id="gd-g-steel2-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aaadb1"/><stop offset="1" stop-color="#929598"/></linearGradient>
+<linearGradient id="gd-g-board-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdfcf8"/><stop offset="1" stop-color="#e1e0dd"/></linearGradient>
+<linearGradient id="gd-g-board-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f0ea"/><stop offset="1" stop-color="#d6d5ce"/></linearGradient>
+<linearGradient id="gd-g-board-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d5ca"/><stop offset="1" stop-color="#bebbb0"/></linearGradient>
+<linearGradient id="gd-g-conc-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9adb0"/><stop offset="1" stop-color="#919597"/></linearGradient>
+<linearGradient id="gd-g-conc-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e9294"/><stop offset="1" stop-color="#777b7d"/></linearGradient>
+<linearGradient id="gd-g-conc-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#777b7e"/><stop offset="1" stop-color="#616567"/></linearGradient>
+<linearGradient id="gd-g-ins-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ebdfae"/><stop offset="1" stop-color="#d0c596"/></linearGradient>
+<linearGradient id="gd-g-ins-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dccd97"/><stop offset="1" stop-color="#c1b37f"/></linearGradient>
+<linearGradient id="gd-g-ins-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c0ae76"/><stop offset="1" stop-color="#a69660"/></linearGradient>
+<linearGradient id="gd-g-conduit-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9bbbea"/><stop offset="1" stop-color="#83a2ce"/></linearGradient>
+<linearGradient id="gd-g-conduit-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#79a2db"/><stop offset="1" stop-color="#638ac0"/></linearGradient>
+<linearGradient id="gd-g-conduit-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#668bc2"/><stop offset="1" stop-color="#5074a8"/></linearGradient>
+<linearGradient id="gd-g-cable-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dee1e5"/><stop offset="1" stop-color="#c4c6ca"/></linearGradient>
+<linearGradient id="gd-g-cable-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7cacf"/><stop offset="1" stop-color="#aeb0b5"/></linearGradient>
+<linearGradient id="gd-g-cable-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9adb3"/><stop offset="1" stop-color="#91959a"/></linearGradient>
+<linearGradient id="gd-g-tape-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3e3e3"/></linearGradient>
+<linearGradient id="gd-g-tape-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f2"/><stop offset="1" stop-color="#d8d8d6"/></linearGradient>
+<linearGradient id="gd-g-tape-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dededb"/><stop offset="1" stop-color="#c4c4c0"/></linearGradient>
+<linearGradient id="gd-g-paper-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d2c6ac"/><stop offset="1" stop-color="#b8ad94"/></linearGradient>
+<linearGradient id="gd-g-paper-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bdaf94"/><stop offset="1" stop-color="#a4967d"/></linearGradient>
+<linearGradient id="gd-g-paper-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a99c81"/><stop offset="1" stop-color="#91856a"/></linearGradient>
+<linearGradient id="gd-g-core-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f0e8"/><stop offset="1" stop-color="#d7d5cd"/></linearGradient>
+<linearGradient id="gd-g-core-front" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8e4d9"/><stop offset="1" stop-color="#cdc9be"/></linearGradient>
+<linearGradient id="gd-g-core-side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d0ccbe"/><stop offset="1" stop-color="#b6b2a5"/></linearGradient>
+<radialGradient id="gd-g-sh"><stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="0.6" stop-color="#000" stop-opacity="0.22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+</defs></svg>
+
+  <!-- ==================== INICIO ==================== -->
+  <section class="hero-section on-dark" id="inicio">
+    <div class="hero-bg" data-parallax="0.22" aria-hidden="true"></div>
     <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <!-- Centered NEXO Logo Brand -->
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-headline">Construimos Soluciones</h1>
+        <p class="hero-slogan">Conectamos Posibilidades</p>
+        <p class="hero-lead">Construcción en seco. Obras residenciales y comerciales en Puerto Libertad, Misiones.</p>
+
+        <div class="hero-actions">
+          <a href="contacto.html" class="btn-primary-red">
+            <span>Contacto</span>
+          </a>
+        </div>
+      </div>
+
       <div class="hero-brand-wrap">
         <img src="assets/images/logo.png" alt="NEXO Sistemas Constructivos" class="hero-logo-img">
       </div>
-
-      <!-- Main Headline -->
-      <h1 class="hero-headline">
-        <span>Construimos</span>
-        <span>Soluciones</span>
-      </h1>
-
-      <p class="hero-tagline">Conectamos Posibilidades</p>
-
-      <!-- Dual Gradient Divider Bar -->
-      <div class="hero-divider-bar">
-        <div class="divider-line">
-          <div class="divider-point-left"></div>
-          <div class="divider-point-right"></div>
-        </div>
-      </div>
-
-      <!-- 3 Quick Action Cards -->
-      <div class="hero-actions-grid">
-        <!-- Card 1: Presupuesto (Red) -->
-        <div class="action-card card-presupuesto trigger-presupuesto" role="button" tabindex="0">
-          <div class="card-icon-box">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-          </div>
-          <div class="card-texts">
-            <span class="card-label">Solicitar</span>
-            <span class="card-title">Presupuesto</span>
-          </div>
-          <span class="card-arrow">→</span>
-        </div>
-
-        <!-- Card 2: Obras (Blue) -->
-        <a href="#obras" class="action-card card-obras">
-          <div class="card-icon-box">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
-          </div>
-          <div class="card-texts">
-            <span class="card-label">Ver</span>
-            <span class="card-title">Obras</span>
-          </div>
-          <span class="card-arrow">→</span>
-        </a>
-
-        <!-- Card 3: Guardar Contacto (Neutral/White) -->
-        <div class="action-card card-contacto trigger-contacto-card" role="button" tabindex="0">
-          <div class="card-icon-box">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-            </svg>
-          </div>
-          <div class="card-texts">
-            <span class="card-label">Guardar</span>
-            <span class="card-title">Contacto</span>
-          </div>
-          <span class="card-arrow">→</span>
-        </div>
-      </div>
     </div>
-
-    <!-- Scroll Indicator -->
-    <a href="#servicios" class="hero-scroll-indicator" aria-label="Desplazarse abajo">
-      <div class="mouse-icon">
-        <div class="mouse-wheel"></div>
-      </div>
-      <span>SCROLL</span>
-    </a>
+    <span class="hero-cue" aria-hidden="true"></span>
   </section>
 
-  <!-- ==================== NUESTROS SERVICIOS ==================== -->
-  <section id="servicios">
+  <!-- ==================== CINTA ==================== -->
+  <div class="marquee on-dark" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Steel Frame</span><span>Placas de yeso</span><span>Cielorrasos</span><span>Tabiques</span><span>Molduras</span><span>Remodelaciones</span><span>Obras llave en mano</span>
+      <span>Steel Frame</span><span>Placas de yeso</span><span>Cielorrasos</span><span>Tabiques</span><span>Molduras</span><span>Remodelaciones</span><span>Obras llave en mano</span>
+    </div>
+  </div>
+
+  <!-- ==================== QUE HACEMOS ==================== -->
+  <section class="services" id="que-hacemos">
     <div class="container">
       <div class="section-header-row">
         <div class="section-title-wrap">
-          <h2 class="section-title">Nuestros Servicios</h2>
-          <span class="section-title-accent"></span>
+          <h2 class="section-title">Qué hacemos</h2>
         </div>
         <p class="section-subtitle-text">
-          Soluciones constructivas en seco, con eficiencia, calidad y un enfoque profesional en cada proyecto.
+          Construcción en seco, de la consulta a la entrega.
         </p>
       </div>
 
-      <div class="services-grid">
-        <!-- Service Card 1: Construcción en Seco -->
-        <div class="service-card">
-          <div class="service-accent-bar"></div>
-          <div class="service-img-wrap">
-            <img src="assets/images/service_steel_frame.jpg" alt="Construcción en Seco y Steel Frame" loading="lazy">
-            <div class="service-img-overlay"></div>
-          </div>
-          <div class="service-card-body">
-            <h3 class="service-title">Construcción en Seco</h3>
-            <ul class="service-list">
-              <li>Steel Frame de alta ingeniería</li>
-              <li>Placas de yeso y tabiquería técnica</li>
-              <li>Cielorrasos junta tomada y suspendidos</li>
-            </ul>
-            <div class="service-card-footer">
-              <span class="service-cta-link">Consultar servicio</span>
-              <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Quiero%20consultar%20sobre%20Construcción%20en%20Seco%20y%20Steel%20Frame." target="_blank" rel="noopener" class="service-circle-btn" aria-label="Consultar por Construcción en Seco">→</a>
-            </div>
-          </div>
+      <div class="services-list">
+        <div class="service-row">
+          <h3 class="service-name">Steel Frame</h3>
+          <p class="service-desc">Estructura de perfiles de acero galvanizado.</p>
         </div>
-
-        <!-- Service Card 2: Sistemas Integrales -->
-        <div class="service-card">
-          <div class="service-accent-bar"></div>
-          <div class="service-img-wrap">
-            <img src="assets/images/service_sistemas_integrales.jpg" alt="Sistemas Integrales y Remodelaciones" loading="lazy">
-            <div class="service-img-overlay"></div>
-          </div>
-          <div class="service-card-body">
-            <h3 class="service-title">Sistemas Integrales</h3>
-            <ul class="service-list">
-              <li>Remodelaciones comerciales y residenciales</li>
-              <li>Soluciones llave en mano garantizadas</li>
-              <li>Asesoramiento técnico y computo de obra</li>
-            </ul>
-            <div class="service-card-footer">
-              <span class="service-cta-link">Consultar servicio</span>
-              <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Quiero%20consultar%20sobre%20Sistemas%20Integrales%20Llave%20en%20Mano." target="_blank" rel="noopener" class="service-circle-btn" aria-label="Consultar por Sistemas Integrales">→</a>
-            </div>
-          </div>
+        <div class="service-row">
+          <h3 class="service-name">Tabiques y cielorrasos</h3>
+          <p class="service-desc">Paredes divisorias y cielorrasos de placa de yeso, de junta tomada o suspendidos.</p>
         </div>
-
-        <!-- Service Card 3: Soluciones a Medida -->
-        <div class="service-card">
-          <div class="service-accent-bar"></div>
-          <div class="service-img-wrap">
-            <img src="assets/images/service_soluciones_medida.jpg" alt="Soluciones a Medida" loading="lazy">
-            <div class="service-img-overlay"></div>
-          </div>
-          <div class="service-card-body">
-            <h3 class="service-title">Soluciones a Medida</h3>
-            <ul class="service-list">
-              <li>Proyectos personalizados y arquitectura interior</li>
-              <li>Diseño, cálculo estructural y planificación</li>
-              <li>Ejecución profesional con mano de obra calificada</li>
-            </ul>
-            <div class="service-card-footer">
-              <span class="service-cta-link">Consultar servicio</span>
-              <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Quiero%20consultar%20sobre%20Soluciones%20a%20Medida." target="_blank" rel="noopener" class="service-circle-btn" aria-label="Consultar por Soluciones a Medida">→</a>
-            </div>
-          </div>
+        <div class="service-row">
+          <h3 class="service-name">Molduras</h3>
+          <p class="service-desc">Aplicación de molduras, como zócalos y cornisas.</p>
+        </div>
+        <div class="service-row">
+          <h3 class="service-name">Remodelaciones</h3>
+          <p class="service-desc">Reformas comerciales y residenciales.</p>
+        </div>
+        <div class="service-row">
+          <h3 class="service-name">Obras llave en mano</h3>
+          <p class="service-desc">Del relevamiento a la entrega.</p>
+        </div>
+        <div class="service-row">
+          <h3 class="service-name">Asesoramiento técnico</h3>
+          <p class="service-desc">Cómputo de obra y asesoramiento para tu proyecto.</p>
+        </div>
+        <div class="service-row">
+          <h3 class="service-name">Proyectos a medida</h3>
+          <p class="service-desc">Diseño, cálculo estructural y planificación.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== NUESTRAS OBRAS ==================== -->
-  <section id="obras" style="background: var(--bg-surface);">
+  <!-- ==================== POR DENTRO ==================== -->
+  <section id="por-dentro" class="section-alt">
     <div class="container">
       <div class="section-header-row">
         <div class="section-title-wrap">
-          <h2 class="section-title">Nuestras Obras</h2>
-          <span class="section-title-accent"></span>
-        </div>
-        <a href="#contacto" class="btn-secondary">
-          <span>Ver Todas</span>
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
-      </div>
-
-      <!-- Category Filter Tabs -->
-      <div class="obras-filter-nav">
-        <button class="filter-btn active" data-filter="all">Todas las Obras</button>
-        <button class="filter-btn" data-filter="steelframe">Steel Frame</button>
-        <button class="filter-btn" data-filter="drywall">Placas de Yeso</button>
-        <button class="filter-btn" data-filter="industrial">Estructuras Metálicas</button>
-      </div>
-
-      <!-- Projects Grid -->
-      <div class="obras-grid">
-        <!-- Obra 1: Oficinas Administrativas -->
-        <div class="obra-card" data-category="steelframe" data-project-id="oficinas">
-          <div class="obra-img-box">
-            <img src="assets/images/obra_oficinas.jpg" alt="Oficinas Administrativas en Steel Frame" loading="lazy">
-          </div>
-          <div class="obra-content">
-            <h3 class="obra-title">Oficinas Administrativas</h3>
-            <span class="obra-location">Puerto Libertad, Misiones</span>
-            <div class="obra-tags-row">
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                Steel Frame
-              </span>
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                120 m²
-              </span>
-              <span class="obra-arrow">→</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Obra 2: Local Comercial -->
-        <div class="obra-card" data-category="drywall" data-project-id="local">
-          <div class="obra-img-box">
-            <img src="assets/images/obra_local_comercial.jpg" alt="Local Comercial con Cielorraso LED" loading="lazy">
-          </div>
-          <div class="obra-content">
-            <h3 class="obra-title">Local Comercial</h3>
-            <span class="obra-location">Puerto Esperanza, Misiones</span>
-            <div class="obra-tags-row">
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Placas de yeso
-              </span>
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                80 m²
-              </span>
-              <span class="obra-arrow">→</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Obra 3: Pórtico y Tinglado -->
-        <div class="obra-card" data-category="industrial" data-project-id="tinglado">
-          <div class="obra-img-box">
-            <img src="assets/images/obra_tinglado.jpg" alt="Pórtico y Tinglado Estructura Metálica" loading="lazy">
-          </div>
-          <div class="obra-content">
-            <h3 class="obra-title">Pórtico y Tinglado</h3>
-            <span class="obra-location">Zona Costera, Misiones</span>
-            <div class="obra-tags-row">
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                Estructura metálica
-              </span>
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                200 m²
-              </span>
-              <span class="obra-arrow">→</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Obra 4: Vivienda Particular -->
-        <div class="obra-card" data-category="drywall" data-project-id="vivienda">
-          <div class="obra-img-box">
-            <img src="assets/images/obra_vivienda.jpg" alt="Vivienda Particular Cielorrasos y Tabiques" loading="lazy">
-          </div>
-          <div class="obra-content">
-            <h3 class="obra-title">Vivienda Particular</h3>
-            <span class="obra-location">Puerto Libertad, Misiones</span>
-            <div class="obra-tags-row">
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                Cielorrasos y tabiques
-              </span>
-              <span class="obra-tag">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                150 m²
-              </span>
-              <span class="obra-arrow">→</span>
-            </div>
-          </div>
+          <h2 class="section-title">Cómo es por dentro</h2>
         </div>
       </div>
+
+      <div class="draw-tabs" role="group" aria-label="Elegí qué ver">
+        <button type="button" class="is-on" aria-pressed="true">Panel</button>
+        <button type="button" aria-pressed="false">Tabique</button>
+        <button type="button" aria-pressed="false">Cielorraso</button>
+      </div>
+
+      <div class="draw-grid" data-tab="0">
+          <figure class="draw">
+            <div class="draw-box" data-gl="panel" data-gl-loop="3">
+    <div class="w3d w3d-img" role="img" aria-label="Panel de Steel Frame en perspectiva">
+                <img class="lp" style="--k:0" src="assets/images/2d/panel-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:1" src="assets/images/2d/panel-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:2" src="assets/images/2d/panel-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+            <canvas class="gl-canvas" aria-hidden="true"></canvas>
+            <div class="gl-switch" role="group" aria-label="Tipo de vista"><button type="button" data-view="3d" class="is-active" aria-pressed="true">3D</button><button type="button" data-view="2d" aria-pressed="false">2D</button></div>
+            </div>
+            <figcaption>Panel de Steel Frame: soleras arriba y abajo y montantes verticales.</figcaption>
+          </figure>
+          <figure class="draw">
+            <div class="draw-box" data-gl="wall" data-gl-loop="5">
+    <div class="w3d w3d-img" role="img" aria-label="Muro en seco armado por capas, en perspectiva. Perfiles de acero galvanizado, aislación y cañerías entre ellos, y placas de yeso atornilladas a ambos lados, con las juntas tomadas.">
+                <img class="lp" style="--k:0" src="assets/images/2d/wall-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:1" src="assets/images/2d/wall-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:2" src="assets/images/2d/wall-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:3" src="assets/images/2d/wall-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:4" src="assets/images/2d/wall-5.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+            <canvas class="gl-canvas" aria-hidden="true"></canvas>
+            <div class="gl-switch" role="group" aria-label="Tipo de vista"><button type="button" data-view="3d" class="is-active" aria-pressed="true">3D</button><button type="button" data-view="2d" aria-pressed="false">2D</button></div>
+            </div>
+            <figcaption>Tabique de placas: perfiles, aislación y una placa atornillada de cada lado.</figcaption>
+          </figure>
+          <figure class="draw">
+            <div class="draw-box" data-gl="ceiling" data-gl-loop="4">
+    <div class="w3d w3d-img" role="img" aria-label="Cielorraso suspendido de placa de yeso en perspectiva">
+                <img class="lp" style="--k:0" src="assets/images/2d/ceiling-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:1" src="assets/images/2d/ceiling-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:2" src="assets/images/2d/ceiling-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="lp" style="--k:3" src="assets/images/2d/ceiling-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+            <canvas class="gl-canvas" aria-hidden="true"></canvas>
+            <div class="gl-switch" role="group" aria-label="Tipo de vista"><button type="button" data-view="3d" class="is-active" aria-pressed="true">3D</button><button type="button" data-view="2d" aria-pressed="false">2D</button></div>
+            </div>
+            <figcaption>Cielorraso suspendido: la placa cuelga de perfiles.</figcaption>
+          </figure>
+      </div>
+      <p class="build-note">Modelos en 3D e imágenes generadas por computadora. Medidas de referencia: perfiles de Durlock y Knauf, y placas de 12,5 mm de Durlock, Knauf y Placo. Los materiales y las medidas cambian según el proyecto.</p>
     </div>
   </section>
 
-  <!-- ==================== SOBRE NEXO ==================== -->
-  <section class="about-section" id="nosotros">
+  <!-- ==================== ARMADO EN SECO ==================== -->
+  <section id="que-se-arma" class="play-sec">
     <div class="container">
-      <div class="about-grid">
-        <!-- Visual Column -->
-        <div class="about-visual">
-          <img src="assets/images/sobre_nexo.jpg" alt="Construcción con precisión NEXO" loading="lazy">
-          <div class="about-badge-float">
-            <div class="about-badge-num">+10</div>
-            <div class="about-badge-text">
-              Años de experiencia<br>en construcción en seco
-            </div>
-          </div>
-        </div>
-
-        <!-- Content Column -->
-        <div class="about-content">
-          <span class="about-tag">Sobre NEXO</span>
-          <h2 class="about-headline">Construimos con precisión.</h2>
-          <p class="about-lead">
-            En <strong>NEXO</strong> desarrollamos soluciones en construcción en seco combinando diseño, eficiencia y ejecución profesional. Resolvemos proyectos residenciales y comerciales con los más rigurosos estándares técnicos de la industria.
-          </p>
-
-          <!-- 3 Pillars -->
-          <div class="pillars-list">
-            <!-- Calidad -->
-            <div class="pillar-item">
-              <div class="pillar-icon-box calidad">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <div>
-                <h4 class="pillar-title">Calidad</h4>
-                <p class="pillar-desc">Materiales certificados y terminaciones de primer nivel garantizadas en cada entrega.</p>
-              </div>
-            </div>
-
-            <!-- Rapidez -->
-            <div class="pillar-item">
-              <div class="pillar-icon-box rapidez">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <div>
-                <h4 class="pillar-title">Rapidez</h4>
-                <p class="pillar-desc">Ejecución hasta un 60% más veloz que la construcción tradicional y sin demoras innecesarias.</p>
-              </div>
-            </div>
-
-            <!-- Precisión -->
-            <div class="pillar-item">
-              <div class="pillar-icon-box precision">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-              </div>
-              <div>
-                <h4 class="pillar-title">Precisión</h4>
-                <p class="pillar-desc">Planificación milimétrica, control de escuadras, aislamiento termoacústico y detalle exhaustivo.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== NUESTRO PROCESO ==================== -->
-  <section id="proceso">
-    <div class="container">
-      <div class="section-header-row" style="margin-bottom: 4rem;">
+      <div class="section-header-row">
         <div class="section-title-wrap">
-          <h2 class="section-title">Nuestro Proceso</h2>
-          <span class="section-title-accent"></span>
+          <h2 class="section-title">Qué se puede armar en seco</h2>
         </div>
         <p class="section-subtitle-text">
-          Metodología clara y transparente desde la primera llamada hasta la entrega de llave en mano.
+          Elegí una obra y apretá para armarla paso a paso, en el orden en que se hace.
         </p>
       </div>
-
-      <div class="process-stepper">
-        <!-- Step 1 -->
-        <div class="step-card">
-          <div class="step-icon-circle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+    </div>
+    <div class="play" id="que-se-arma-escena" data-play data-step="1" data-count="6" data-type="vivienda">
+      <div class="play-wrap">
+        <div class="container scene-inner">
+          <div class="scene-media" data-gl="builds">
+            <figure class="scene-item iso-fig is-on" data-steps="1 2 3 4 5 6" data-type="vivienda">
+              <div class="iso w3d-img" role="img" aria-label="Vivienda de Steel Frame armada por etapas">
+                <img class="il il-1 ph" src="assets/images/2d/vivienda-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-2 ph" src="assets/images/2d/vivienda-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-3 ph" src="assets/images/2d/vivienda-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-4 ph" src="assets/images/2d/vivienda-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-5 ph" src="assets/images/2d/vivienda-5.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-6 ph" src="assets/images/2d/vivienda-6.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Vivienda con estructura de Steel Frame</figcaption>
+            </figure>
+            <figure class="scene-item iso-fig" data-steps="1 2 3 4 5 6" data-type="ampliacion">
+              <div class="iso w3d-img" role="img" aria-label="Ampliación en planta alta armada por etapas">
+                <img class="il il-1 ph" src="assets/images/2d/ampliacion-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-2 ph" src="assets/images/2d/ampliacion-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-3 ph" src="assets/images/2d/ampliacion-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-4 ph" src="assets/images/2d/ampliacion-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-5 ph" src="assets/images/2d/ampliacion-5.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-6 ph" src="assets/images/2d/ampliacion-6.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Ampliación en planta alta sobre una construcción existente</figcaption>
+            </figure>
+            <figure class="scene-item iso-fig" data-steps="1 2 3 4 5 6" data-type="local">
+              <div class="iso w3d-img" role="img" aria-label="Local comercial armado por etapas">
+                <img class="il il-1 ph" src="assets/images/2d/local-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-2 ph" src="assets/images/2d/local-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-3 ph" src="assets/images/2d/local-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-4 ph" src="assets/images/2d/local-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-5 ph" src="assets/images/2d/local-5.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-6 ph" src="assets/images/2d/local-6.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Local comercial armado con tabiques y cielorraso</figcaption>
+            </figure>
+            <figure class="scene-item iso-fig" data-steps="1 2 3 4 5 6" data-type="oficinas">
+              <div class="iso w3d-img" role="img" aria-label="Oficinas y consultorios armados por etapas">
+                <img class="il il-1 ph" src="assets/images/2d/oficinas-1.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-2 ph" src="assets/images/2d/oficinas-2.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-3 ph" src="assets/images/2d/oficinas-3.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-4 ph" src="assets/images/2d/oficinas-4.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-5 ph" src="assets/images/2d/oficinas-5.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+                <img class="il il-6 ph" src="assets/images/2d/oficinas-6.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Oficinas y consultorios divididos con tabiques</figcaption>
+            </figure>
+            <canvas class="gl-canvas" aria-hidden="true"></canvas>
+            <div class="gl-switch" role="group" aria-label="Tipo de vista"><button type="button" data-view="3d" class="is-active" aria-pressed="true">3D</button><button type="button" data-view="2d" aria-pressed="false">2D</button></div>
+            <div class="gl-tools" role="group" aria-label="Controles de la vista 3D">
+              <button type="button" data-act="left" aria-label="Girar hacia la izquierda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v5h5"/></svg></button>
+              <button type="button" data-act="right" aria-label="Girar hacia la derecha"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg></button>
+              <button type="button" data-act="up" aria-label="Inclinar hacia arriba"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button>
+              <button type="button" data-act="down" aria-label="Inclinar hacia abajo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button>
+              <button type="button" data-act="in" aria-label="Acercar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button type="button" data-act="out" aria-label="Alejar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+              <button type="button" data-act="auto" aria-label="Girar solo: activar o pausar" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ic-play" d="M8 5l11 7-11 7z"/><path class="ic-pause" d="M8 5v14M16 5v14"/></svg></button>
+              <button type="button" data-act="reset" aria-label="Volver a la vista inicial"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg></button>
+            </div>
+            <p class="gl-hint" aria-hidden="true">Click derecho: girar. Click en una pieza: qué es</p>
           </div>
-          <span class="step-number">01. Consulta</span>
-          <p class="step-desc">Nos contás tu proyecto y objetivos iniciales.</p>
-          <span class="step-arrow-divider">›</span>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="step-card">
-          <div class="step-icon-circle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <div class="scene-side">
+            <div class="type-tabs" role="group" aria-label="Tipo de obra">
+              <button type="button" class="type-tab is-active" data-type-tab="vivienda" aria-pressed="true">Vivienda</button>
+              <button type="button" class="type-tab" data-type-tab="ampliacion" aria-pressed="false">Ampliación</button>
+              <button type="button" class="type-tab" data-type-tab="local" aria-pressed="false">Local comercial</button>
+              <button type="button" class="type-tab" data-type-tab="oficinas" aria-pressed="false">Oficinas y consultorios</button>
+            </div>
+            <ol class="build-steps" data-for="vivienda">
+              <li class="build-step scene-step is-active" data-step="1">
+                <span class="step-title">Fundación</span>
+                <div class="step-body"><p class="reason-text">Se ejecuta la fundación, por lo general una platea de hormigón armado (una losa apoyada sobre el suelo).</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="2">
+                <span class="step-title">Estructura de perfiles</span>
+                <div class="step-body"><p class="reason-text">Se montan los paneles de perfiles de acero galvanizado que forman las paredes.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="3">
+                <span class="step-title">Cerramiento exterior</span>
+                <div class="step-body"><p class="reason-text">Por fuera se colocan placas, por ejemplo de OSB (tablero de virutas de madera orientadas) o cementicias, con la barrera de agua y viento, y se cierra la envolvente, es decir, el cerramiento exterior del edificio.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="4">
+                <span class="step-title">Techo</span>
+                <div class="step-body"><p class="reason-text">Se arma la estructura del techo con perfiles y se coloca la cubierta.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="5">
+                <span class="step-title">Aberturas e instalaciones</span>
+                <div class="step-body"><p class="reason-text">Se colocan ventanas y puertas, y las instalaciones pasan por dentro de las paredes antes de cerrarlas.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="6">
+                <span class="step-title">Terminación</span>
+                <div class="step-body"><p class="reason-text">Por dentro van la aislación y las placas de yeso con las juntas tomadas, y por fuera la terminación elegida.</p></div>
+              </li>
+            </ol>
+            <ol class="build-steps" data-for="ampliacion">
+              <li class="build-step scene-step is-active" data-step="1">
+                <span class="step-title">Verificación de lo existente</span>
+                <div class="step-body"><p class="reason-text">Se verifica que la estructura y las fundaciones existentes admitan la carga de la planta nueva.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="2">
+                <span class="step-title">Entrepiso</span>
+                <div class="step-body"><p class="reason-text">Se arma el entrepiso sobre la construcción existente.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="3">
+                <span class="step-title">Paneles de la planta alta</span>
+                <div class="step-body"><p class="reason-text">Se montan los paneles de perfiles de acero galvanizado de la planta nueva.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="4">
+                <span class="step-title">Cerramientos</span>
+                <div class="step-body"><p class="reason-text">Se cierran las paredes con placas y barreras, igual que en una obra nueva.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="5">
+                <span class="step-title">Techo</span>
+                <div class="step-body"><p class="reason-text">Se arma la cubierta de la planta nueva.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="6">
+                <span class="step-title">Terminación</span>
+                <div class="step-body"><p class="reason-text">Aberturas, aislación, placas de yeso interiores y terminaciones.</p></div>
+              </li>
+            </ol>
+            <ol class="build-steps" data-for="local">
+              <li class="build-step scene-step is-active" data-step="1">
+                <span class="step-title">Replanteo</span>
+                <div class="step-body"><p class="reason-text">Se relevan las medidas y se marca en el piso y en la losa la posición de los tabiques.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="2">
+                <span class="step-title">Estructura de tabiques</span>
+                <div class="step-body"><p class="reason-text">Los tabiques no portantes, que no sostienen la estructura del edificio, se arman con soleras y montantes de acero galvanizado, fijados al piso y a la losa.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="3">
+                <span class="step-title">Instalaciones y aislación</span>
+                <div class="step-body"><p class="reason-text">Antes de cerrar los tabiques, por las perforaciones de los montantes pasan cables y cañerías, y se coloca la aislación que pida el proyecto.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="4">
+                <span class="step-title">Placas</span>
+                <div class="step-body"><p class="reason-text">Se cierran los tabiques con placas de yeso atornilladas, primero de un lado y, con las instalaciones y la aislación en su lugar, del otro.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="5">
+                <span class="step-title">Cielorraso</span>
+                <div class="step-body"><p class="reason-text">Se cuelga la estructura del cielorraso y se atornillan las placas, con las instalaciones por encima.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="6">
+                <span class="step-title">Terminación</span>
+                <div class="step-body"><p class="reason-text">Se toman las juntas, se pinta y se colocan puertas, luminarias, equipamiento y las molduras, como zócalos y cornisas.</p></div>
+              </li>
+            </ol>
+            <ol class="build-steps" data-for="oficinas">
+              <li class="build-step scene-step is-active" data-step="1">
+                <span class="step-title">Replanteo</span>
+                <div class="step-body"><p class="reason-text">Se define la distribución de los ambientes y se marca en el piso la posición de cada tabique.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="2">
+                <span class="step-title">Estructura de tabiques</span>
+                <div class="step-body"><p class="reason-text">Se arman los tabiques divisorios con soleras y montantes de acero galvanizado.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="3">
+                <span class="step-title">Aislación acústica e instalaciones</span>
+                <div class="step-body"><p class="reason-text">Antes de cerrar los tabiques, entre los perfiles se coloca lana de vidrio o de roca para aislar acústicamente los ambientes, y pasan los cables y las cañerías.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="4">
+                <span class="step-title">Placas</span>
+                <div class="step-body"><p class="reason-text">Se atornillan las placas de yeso en las dos caras.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="5">
+                <span class="step-title">Cielorraso</span>
+                <div class="step-body"><p class="reason-text">Se arma el cielorraso suspendido, con las instalaciones por encima de las placas.</p></div>
+              </li>
+              <li class="build-step scene-step" data-step="6">
+                <span class="step-title">Terminación</span>
+                <div class="step-body"><p class="reason-text">Juntas tomadas, pintura, puertas, luminarias y molduras, como zócalos y cornisas.</p></div>
+              </li>
+            </ol>
+            <div class="play-controls">
+              <button type="button" class="btn-box" data-play-prev><span>Paso anterior</span></button>
+              <button type="button" class="btn-primary-red" data-play-next><span>Armar el siguiente paso</span></button>
+              <button type="button" class="btn-box" data-play-all><span>Ver todo el armado</span></button>
+            </div>
+            <div class="build-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
-          <span class="step-number">02. Relevamiento</span>
-          <p class="step-desc">Analizamos el espacio en obra y tus necesidades técnicas.</p>
-          <span class="step-arrow-divider">›</span>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-card">
-          <div class="step-icon-circle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          </div>
-          <span class="step-number">03. Presupuesto</span>
-          <p class="step-desc">Propuesta detallada, transparente y sin sorpresas.</p>
-          <span class="step-arrow-divider">›</span>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="step-card">
-          <div class="step-icon-circle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-          </div>
-          <span class="step-number">04. Ejecución</span>
-          <p class="step-desc">Mano de obra especializada y estricto control de calidad.</p>
-          <span class="step-arrow-divider">›</span>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="step-card">
-          <div class="step-icon-circle">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <span class="step-number">05. Entrega</span>
-          <p class="step-desc">Cumplimos plazos pactados y satisfacción total.</p>
         </div>
       </div>
     </div>
+    <div class="container">
+      <p class="build-note">Imágenes generadas por computadora.</p>
+    </div>
   </section>
 
-  <!-- ==================== TESTIMONIOS ==================== -->
-  <section style="background: var(--bg-surface);">
+  <!-- ==================== COLOCACION DE PLACAS ==================== -->
+  <section id="colocacion" class="guia-sec">
+    <div class="container">
+      <details class="guia-fold">
+        <summary><span>Cómo se colocan las placas</span><span class="guia-fold-sub">Paso a paso, para una pared y para un cielorraso</span></summary>
+    <div class="guia guia--page" data-guia>
+          <div class="container">
+        <div class="guia-head">
+          <p class="guia-lead">Los pasos, en el orden en que se hacen, para una pared y para un cielorraso. Los dibujos son esquemáticos.</p>
+        </div>
+        <div class="type-tabs" role="group" aria-label="Qué se está armando">
+          <button type="button" class="type-tab is-active" data-guia-tab="pared" aria-pressed="true">Pared</button>
+          <button type="button" class="type-tab" data-guia-tab="cielorraso" aria-pressed="false">Cielorraso</button>
+        </div>
+
+        <div class="guia-panel" data-guia-panel="pared">
+          <p class="guia-warn">Esta guía es para tabiques, que no sostienen la estructura del edificio. Las paredes portantes de Steel Frame se calculan según el reglamento CIRSOC 303.</p>
+          <p class="guia-sub">Antes de empezar</p>
+          <div class="guia-list guia-pre">
+          <div class="guia-step">
+            <h4>Qué placa elegir</h4>
+            <div><p>La placa de yeso tiene un núcleo de yeso revestido de cartón: es más liviana y sus bordes pueden ser rectos o rebajados. El panel de fibra-yeso lleva celulosa mezclada con el yeso: es más pesado, aguanta más carga y aísla mejor el sonido. Para cocinas y baños hay placas resistentes a la humedad, con el papel tratado. Se consiguen de 1,20 m de ancho, de 2 a 3 m de largo y de 10 a 18 mm de espesor; cuando hace falta más espesor, se superponen placas.</p></div>
+            <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de una placa de yeso, con cartón a los dos lados y un núcleo de yeso, y de un panel de fibra-yeso, de masa pareja con fibras de celulosa" focusable="false"><ellipse class="gd-shadow" cx="58.0" cy="84.5" rx="54.0" ry="20.0"/><polygon class="gd-m-paper gd-f-side" points="115.8,76.5 85.9,93.7 85.9,92.7 115.8,75.4"/><polygon class="gd-m-paper gd-f-front" points="40.1,67.2 85.9,93.7 85.9,92.7 40.1,66.2"/><polygon class="gd-m-paper gd-f-top" points="70.0,49.0 115.8,75.4 85.9,92.7 40.1,66.2"/><polygon class="gd-m-core gd-f-side" points="115.8,75.4 85.9,92.7 85.9,87.8 115.8,70.6"/><polygon class="gd-m-core gd-f-front" points="40.1,66.2 85.9,92.7 85.9,87.8 40.1,61.4"/><polygon class="gd-m-core gd-f-top" points="70.0,44.1 115.8,70.6 85.9,87.8 40.1,61.4"/><polygon class="gd-m-paper gd-f-side" points="115.8,70.6 85.9,87.8 85.9,86.8 115.8,69.5"/><polygon class="gd-m-paper gd-f-front" points="40.1,61.4 85.9,87.8 85.9,86.8 40.1,60.4"/><polygon class="gd-m-paper gd-f-top" points="70.0,43.1 115.8,69.5 85.9,86.8 40.1,60.4"/><polygon class="gd-m-core gd-f-side" points="76.0,99.4 46.1,116.7 46.1,109.8 76.0,92.5"/><polygon class="gd-m-core gd-f-front" points="0.3,90.2 46.1,116.7 46.1,109.8 0.3,83.3"/><polygon class="gd-m-core gd-f-top" points="30.2,66.1 76.0,92.5 46.1,109.8 0.3,83.3"/><line class="gd-fiber" x1="30.2" y1="73.0" x2="31.7" y2="76.7"/><line class="gd-fiber" x1="32.2" y1="83.3" x2="34.6" y2="87.7"/><line class="gd-fiber" x1="48.1" y1="85.6" x2="41.6" y2="84.8"/><line class="gd-fiber" x1="44.1" y1="97.1" x2="46.6" y2="101.5"/><line class="gd-fiber" x1="18.2" y1="86.8" x2="11.7" y2="85.9"/><line class="gd-fiber" x1="58.0" y1="96.0" x2="59.5" y2="99.7"/><line class="gd-fiber" x1="26.2" y1="93.7" x2="27.7" y2="97.4"/><line class="gd-fiber" x1="18.2" y1="77.6" x2="18.7" y2="80.8"/><line class="gd-leader-h" x1="83.9" y1="58.1" x2="156" y2="31.0"/><line class="gd-leader" x1="83.9" y1="58.1" x2="156" y2="31.0"/><line class="gd-leader-h" x1="100.9" y1="78.7" x2="156" y2="55.0"/><line class="gd-leader" x1="100.9" y1="78.7" x2="156" y2="55.0"/><line class="gd-leader-h" x1="100.9" y1="81.6" x2="156" y2="83.0"/><line class="gd-leader" x1="100.9" y1="81.6" x2="156" y2="83.0"/><line class="gd-leader-h" x1="61.0" y1="104.6" x2="156" y2="113.0"/><line class="gd-leader" x1="61.0" y1="104.6" x2="156" y2="113.0"/><circle class="gd-pt" cx="83.9" cy="58.1" r="2.4"/><circle class="gd-pt" cx="100.9" cy="78.7" r="2.4"/><circle class="gd-pt" cx="100.9" cy="81.6" r="2.4"/><circle class="gd-pt" cx="61.0" cy="104.6" r="2.4"/><text class="gd-t" x="160" y="34.0"><tspan x="160" dy="0">Placa de yeso</tspan></text><text class="gd-t" x="160" y="58.0"><tspan x="160" dy="0">Cartón a los</tspan><tspan x="160" dy="9.5">dos lados</tspan></text><text class="gd-t" x="160" y="86.0"><tspan x="160" dy="0">Núcleo de yeso</tspan></text><text class="gd-t" x="160" y="116.0"><tspan x="160" dy="0">Panel de fibra-yeso,</tspan><tspan x="160" dy="9.5">yeso con celulosa</tspan></text></svg><figcaption>Corte de los dos tipos: la placa de yeso tiene un núcleo de yeso con cartón a los dos lados, y el panel de fibra-yeso es una masa pareja de yeso con fibras de celulosa.</figcaption></figure>
+          </div>
+          <div class="guia-step">
+            <h4>Herramientas</h4>
+            <div><p>Atornillador con puntas, taladro percutor con broca, nivel, regla, cúter, sierra de calar y sierra de corona, tijera para chapa, alicate para perforar, espátula, paleta y lija. También elementos de protección personal.</p></div>
+          </div>
+          </div>
+          <p class="guia-sub">Los pasos</p>
+          <ol class="guia-list">
+            <li class="guia-step">
+              <h4>Medir y marcar</h4>
+              <div>
+                <p>Se mide el lugar y se marca dónde va la pared, dónde va la puerta y hacia qué lado abre. Con eso se elige el tipo de placa que corresponde al ambiente.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Plano visto desde arriba con una pared, el hueco de una puerta y el arco hacia el lado que abre, y las marcas en el piso" focusable="false"><rect class="gd-plan" x="10" y="12" width="250" height="126"/><rect class="gd-conc" x="24" y="78" width="86" height="9"/><rect class="gd-conc" x="150" y="78" width="96" height="9"/><line class="gd-door" x1="110" y1="82.5" x2="110" y2="40"/><path class="gd-swing" d="M110 40 A42.5 42.5 0 0 1 152.5 82.5"/><line class="gd-cut" x1="24" y1="82.5" x2="10" y2="82.5"/><line class="gd-cut" x1="246" y1="82.5" x2="260" y2="82.5"/><circle class="gd-mark" cx="24" cy="82.5" r="2.4"/><circle class="gd-mark" cx="246" cy="82.5" r="2.4"/><text class="gd-t" x="67" y="104" text-anchor="middle">Pared</text><text class="gd-t" x="131" y="104" text-anchor="middle">Puerta</text><text class="gd-t" x="198" y="104" text-anchor="middle">Pared</text><text class="gd-t" x="252" y="54" text-anchor="end">Hacia dónde abre</text><text class="gd-t" x="16" y="28">Plano de la obra, visto desde arriba</text><text class="gd-t" x="16" y="130">Marcas en el piso</text></svg><figcaption>Plano visto desde arriba: la pared con el hueco de la puerta, el arco que marca hacia qué lado abre y las marcas en el piso que indican dónde va la pared.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Soleras de piso y techo</h4>
+              <div>
+                <p>Se cortan las soleras (los perfiles en U) con tijera para chapa y se fijan al piso y al techo. Llevan una cinta de sellado acústica y, como mínimo, tres puntos de fijación, con no más de 1 metro entre uno y otro.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de las soleras: una fijada al piso, con la cinta de sellado acústica debajo y los puntos de fijación, y otra bajo la losa" focusable="false"><ellipse class="gd-shadow" cx="60.5" cy="111.5" rx="56.0" ry="15.0"/><polygon class="gd-m-conc gd-f-side" points="120.2,133.8 107.8,140.9 107.8,133.1 120.2,126.0"/><polygon class="gd-m-conc gd-f-front" points="4.2,81.1 107.8,140.9 107.8,133.1 4.2,73.3"/><polygon class="gd-m-conc gd-f-top" points="16.6,66.2 120.2,126.0 107.8,133.1 4.2,73.3"/><polygon class="gd-m-tape gd-f-side" points="110.1,124.0 104.4,127.2 104.4,126.2 110.1,123.0"/><polygon class="gd-m-tape gd-f-front" points="14.4,75.2 104.4,127.2 104.4,126.2 14.4,74.2"/><polygon class="gd-m-tape gd-f-top" points="20.0,71.0 110.1,123.0 104.4,126.2 14.4,74.2"/><polygon class="gd-m-steel gd-f-side" points="110.1,123.0 104.4,126.2 104.4,123.0 110.1,119.7"/><polygon class="gd-m-steel gd-f-front" points="14.4,74.2 104.4,126.2 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-top" points="20.0,67.7 110.1,119.7 104.4,123.0 14.4,71.0"/><polygon class="gd-screw" points="31.8,77.8 30.9,78.0 30.0,77.9 29.3,77.5 29.2,77.0 29.6,76.5 30.5,76.3 31.4,76.4 32.0,76.7 32.2,77.3"/><polygon class="gd-hi" points="31.1,77.0 30.5,77.1 30.1,76.9 30.3,76.5 30.8,76.4 31.3,76.7"/><polygon class="gd-hi" points="31.1,77.3 30.8,77.4 30.4,77.4 30.2,77.2 30.1,77.0 30.3,76.8 30.6,76.8 30.9,76.8 31.2,76.9 31.2,77.1"/><polygon class="gd-screw" points="63.3,96.0 62.5,96.2 61.5,96.1 60.9,95.7 60.7,95.2 61.1,94.7 62.0,94.5 62.9,94.6 63.6,94.9 63.7,95.5"/><polygon class="gd-hi" points="62.6,95.2 62.1,95.3 61.7,95.1 61.8,94.7 62.4,94.6 62.8,94.9"/><polygon class="gd-hi" points="62.6,95.5 62.3,95.6 62.0,95.6 61.7,95.4 61.7,95.2 61.8,95.0 62.1,95.0 62.5,95.0 62.7,95.1 62.8,95.3"/><polygon class="gd-screw" points="94.8,114.2 94.0,114.4 93.1,114.3 92.4,113.9 92.2,113.4 92.7,112.9 93.5,112.7 94.4,112.8 95.1,113.1 95.2,113.7"/><polygon class="gd-hi" points="94.1,113.4 93.6,113.5 93.2,113.3 93.3,112.9 93.9,112.8 94.3,113.1"/><polygon class="gd-hi" points="94.1,113.7 93.8,113.8 93.5,113.8 93.2,113.6 93.2,113.4 93.3,113.2 93.7,113.2 94.0,113.2 94.2,113.3 94.3,113.5"/><polygon class="gd-m-steel gd-f-side" points="110.1,76.3 104.4,79.5 104.4,76.3 110.1,73.0"/><polygon class="gd-m-steel gd-f-front" points="14.4,27.5 104.4,79.5 104.4,76.3 14.4,24.3"/><polygon class="gd-m-steel gd-f-top" points="20.0,21.0 110.1,73.0 104.4,76.3 14.4,24.3"/><polygon class="gd-m-tape gd-f-side" points="110.1,73.0 104.4,76.3 104.4,75.2 110.1,72.0"/><polygon class="gd-m-tape gd-f-front" points="14.4,24.3 104.4,76.3 104.4,75.2 14.4,23.2"/><polygon class="gd-m-tape gd-f-top" points="20.0,20.0 110.1,72.0 104.4,75.2 14.4,23.2"/><polygon class="gd-m-conc gd-f-side" points="120.2,74.0 107.8,81.1 107.8,73.3 120.2,66.2"/><polygon class="gd-m-conc gd-f-front" points="4.2,21.3 107.8,81.1 107.8,73.3 4.2,13.5"/><polygon class="gd-m-conc gd-f-top" points="16.6,6.4 120.2,66.2 107.8,73.3 4.2,13.5"/><line class="gd-leader-h" x1="102.2" y1="76.6" x2="156" y2="41.0"/><line class="gd-leader" x1="102.2" y1="76.6" x2="156" y2="41.0"/><line class="gd-leader-h" x1="93.7" y1="113.5" x2="156" y2="75.0"/><line class="gd-leader" x1="93.7" y1="113.5" x2="156" y2="75.0"/><line class="gd-leader-h" x1="99.9" y1="122.5" x2="156" y2="97.0"/><line class="gd-leader" x1="99.9" y1="122.5" x2="156" y2="97.0"/><line class="gd-leader-h" x1="101.1" y1="124.8" x2="156" y2="119.0"/><line class="gd-leader" x1="101.1" y1="124.8" x2="156" y2="119.0"/><circle class="gd-pt" cx="102.2" cy="76.6" r="2.4"/><circle class="gd-pt" cx="93.7" cy="113.5" r="2.4"/><circle class="gd-pt" cx="99.9" cy="122.5" r="2.4"/><circle class="gd-pt" cx="101.1" cy="124.8" r="2.4"/><text class="gd-t" x="160" y="44.0"><tspan x="160" dy="0">Solera de arriba,</tspan><tspan x="160" dy="9.5">bajo la losa</tspan></text><text class="gd-t" x="160" y="78.0"><tspan x="160" dy="0">Fijación al piso</tspan></text><text class="gd-t" x="160" y="100.0"><tspan x="160" dy="0">Solera de abajo</tspan></text><text class="gd-t" x="160" y="122.0"><tspan x="160" dy="0">Cinta de sellado</tspan><tspan x="160" dy="9.5">acústica</tspan></text></svg><figcaption>Las dos soleras. A la de abajo se le ven los puntos de fijación al piso y la cinta de sellado acústica que va entre el perfil y la superficie; la de arriba va bajo la losa.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Montantes</h4>
+              <div>
+                <p>Entre las soleras se colocan los montantes (los perfiles en C), de forma vertical, y se unen con tornillos. En tabiques de placas van cada 40 o 48 cm, y otra guía indica una separación igual a la mitad del ancho de la placa. La separación definitiva la fija el proyecto.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de dos soleras y de los montantes colocados entre ellas, con perforaciones en el alma para pasar cables y caños" focusable="false"><ellipse class="gd-shadow" cx="60.5" cy="111.5" rx="56.0" ry="15.0"/><polygon class="gd-m-conc gd-f-side" points="120.2,133.8 107.8,140.9 107.8,133.1 120.2,126.0"/><polygon class="gd-m-conc gd-f-front" points="4.2,81.1 107.8,140.9 107.8,133.1 4.2,73.3"/><polygon class="gd-m-conc gd-f-top" points="16.6,66.2 120.2,126.0 107.8,133.1 4.2,73.3"/><polygon class="gd-m-steel gd-f-side" points="110.1,124.0 104.4,127.2 104.4,123.0 110.1,119.7"/><polygon class="gd-m-steel gd-f-front" points="14.4,75.2 104.4,127.2 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-top" points="20.0,67.7 110.1,119.7 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-side" points="23.5,70.2 19.0,72.8 19.0,29.4 23.5,26.8"/><polygon class="gd-m-steel gd-f-front" points="15.0,70.6 19.0,72.8 19.0,29.4 15.0,27.1"/><polygon class="gd-m-steel gd-f-top" points="19.5,24.5 23.5,26.8 19.0,29.4 15.0,27.1"/><polygon class="gd-hole" points="22.6,62.1 19.9,63.6 19.9,59.7 22.6,58.2"/><polygon class="gd-hole" points="22.6,49.1 19.9,50.6 19.9,46.7 22.6,45.2"/><polygon class="gd-hole" points="22.6,36.1 19.9,37.6 19.9,33.7 22.6,32.2"/><polygon class="gd-m-steel gd-f-side" points="46.0,83.2 41.5,85.8 41.5,42.4 46.0,39.8"/><polygon class="gd-m-steel gd-f-front" points="37.6,83.6 41.5,85.8 41.5,42.4 37.6,40.1"/><polygon class="gd-m-steel gd-f-top" points="42.1,37.5 46.0,39.8 41.5,42.4 37.6,40.1"/><polygon class="gd-hole" points="45.1,75.1 42.4,76.6 42.4,72.7 45.1,71.2"/><polygon class="gd-hole" points="45.1,62.1 42.4,63.6 42.4,59.7 45.1,58.2"/><polygon class="gd-hole" points="45.1,49.1 42.4,50.6 42.4,46.7 45.1,45.2"/><polygon class="gd-m-steel gd-f-side" points="68.5,96.2 64.0,98.8 64.0,55.4 68.5,52.8"/><polygon class="gd-m-steel gd-f-front" points="60.1,96.6 64.0,98.8 64.0,55.4 60.1,53.1"/><polygon class="gd-m-steel gd-f-top" points="64.6,50.5 68.5,52.8 64.0,55.4 60.1,53.1"/><polygon class="gd-hole" points="67.6,88.1 64.9,89.6 64.9,85.7 67.6,84.2"/><polygon class="gd-hole" points="67.6,75.1 64.9,76.6 64.9,72.7 67.6,71.2"/><polygon class="gd-hole" points="67.6,62.1 64.9,63.6 64.9,59.7 67.6,58.2"/><polygon class="gd-m-steel gd-f-side" points="91.0,109.2 86.5,111.8 86.5,68.4 91.0,65.8"/><polygon class="gd-m-steel gd-f-front" points="82.6,109.6 86.5,111.8 86.5,68.4 82.6,66.2"/><polygon class="gd-m-steel gd-f-top" points="87.1,63.5 91.0,65.8 86.5,68.4 82.6,66.2"/><polygon class="gd-hole" points="90.1,101.1 87.4,102.6 87.4,98.7 90.1,97.2"/><polygon class="gd-hole" points="90.1,88.1 87.4,89.6 87.4,85.7 90.1,84.2"/><polygon class="gd-hole" points="90.1,75.1 87.4,76.6 87.4,72.7 90.1,71.2"/><polygon class="gd-m-steel gd-f-side" points="109.6,120.0 105.1,122.6 105.1,79.2 109.6,76.5"/><polygon class="gd-m-steel gd-f-front" points="101.2,120.3 105.1,122.6 105.1,79.2 101.2,76.9"/><polygon class="gd-m-steel gd-f-top" points="105.7,74.3 109.6,76.5 105.1,79.2 101.2,76.9"/><polygon class="gd-hole" points="108.7,111.8 106.0,113.3 106.0,109.4 108.7,107.9"/><polygon class="gd-hole" points="108.7,98.8 106.0,100.3 106.0,96.4 108.7,94.9"/><polygon class="gd-hole" points="108.7,85.8 106.0,87.3 106.0,83.4 108.7,81.9"/><polygon class="gd-m-steel gd-f-side" points="110.1,76.3 104.4,79.5 104.4,75.2 110.1,72.0"/><polygon class="gd-m-steel gd-f-front" points="14.4,27.5 104.4,79.5 104.4,75.2 14.4,23.2"/><polygon class="gd-m-steel gd-f-top" points="20.0,20.0 110.1,72.0 104.4,75.2 14.4,23.2"/><polygon class="gd-m-conc gd-f-side" points="120.2,74.0 107.8,81.1 107.8,73.3 120.2,66.2"/><polygon class="gd-m-conc gd-f-front" points="4.2,21.3 107.8,81.1 107.8,73.3 4.2,13.5"/><polygon class="gd-m-conc gd-f-top" points="16.6,6.4 120.2,66.2 107.8,73.3 4.2,13.5"/><line class="gd-leader-h" x1="86.5" y1="84.9" x2="156" y2="37.0"/><line class="gd-leader" x1="86.5" y1="84.9" x2="156" y2="37.0"/><line class="gd-leader-h" x1="106.7" y1="98.0" x2="156" y2="75.0"/><line class="gd-leader" x1="106.7" y1="98.0" x2="156" y2="75.0"/><line class="gd-leader-h" x1="101.1" y1="120.8" x2="156" y2="105.0"/><line class="gd-leader" x1="101.1" y1="120.8" x2="156" y2="105.0"/><circle class="gd-pt" cx="86.5" cy="84.9" r="2.4"/><circle class="gd-pt" cx="106.7" cy="98.0" r="2.4"/><circle class="gd-pt" cx="101.1" cy="120.8" r="2.4"/><text class="gd-t" x="160" y="40.0"><tspan x="160" dy="0">Montante</tspan></text><text class="gd-t" x="160" y="78.0"><tspan x="160" dy="0">Perforación para</tspan><tspan x="160" dy="9.5">cables y caños</tspan></text><text class="gd-t" x="160" y="108.0"><tspan x="160" dy="0">Solera</tspan></text></svg><figcaption>Los montantes verticales entre las dos soleras. En la cara lateral, que es el alma del perfil, se ven las perforaciones para pasar cables y caños. La separación del dibujo no está a escala.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Cortes y huecos</h4>
+              <div>
+                <p>La placa se corta con cúter por la cara vista, marcando solo el papel; se golpea por atrás para quebrarla y se lija el borde. También se puede cortar con sierra de calar. Los huecos para tomas e interruptores se hacen con sierra de corona antes de colocar la placa.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de una placa apoyada con la línea de corte marcada con cúter y un hueco redondo para una toma" focusable="false"><ellipse class="gd-shadow" cx="71.4" cy="81.4" rx="54.0" ry="20.0"/><polygon class="gd-m-board gd-f-side" points="130.5,84.7 81.0,113.3 81.0,110.7 130.5,82.1"/><polygon class="gd-m-board gd-f-front" points="10.5,72.6 81.0,113.3 81.0,110.7 10.5,70.0"/><polygon class="gd-m-board gd-f-top" points="60.0,41.4 130.5,82.1 81.0,110.7 10.5,70.0"/><polygon class="gd-cutline" points="84.8,55.7 85.3,56.0 35.8,84.6 35.2,84.3"/><polygon class="gd-hole" points="87.6,90.3 82.4,91.8 76.7,91.3 72.6,88.9 71.6,85.6 74.3,82.6 79.5,81.0 85.2,81.6 89.4,83.9 90.3,87.3"/><polygon class="gd-ring" points="87.6,90.2 82.4,91.7 76.7,91.2 72.6,88.8 71.6,85.5 74.3,82.5 79.5,81.0 85.2,81.5 89.4,83.9 90.3,87.2"/><line class="gd-leader-h" x1="79.3" y1="59.1" x2="156" y2="49.0"/><line class="gd-leader" x1="79.3" y1="59.1" x2="156" y2="49.0"/><line class="gd-leader-h" x1="84.8" y1="88.7" x2="156" y2="107.0"/><line class="gd-leader" x1="84.8" y1="88.7" x2="156" y2="107.0"/><circle class="gd-pt" cx="79.3" cy="59.1" r="2.4"/><circle class="gd-pt" cx="84.8" cy="88.7" r="2.4"/><text class="gd-t" x="160" y="52.0"><tspan x="160" dy="0">Línea de corte</tspan><tspan x="160" dy="9.5">con cúter</tspan></text><text class="gd-t" x="160" y="110.0"><tspan x="160" dy="0">Hueco para toma,</tspan><tspan x="160" dy="9.5">con sierra</tspan><tspan x="160" dy="9.5">de corona</tspan></text></svg><figcaption>Una placa apoyada con la línea de corte marcada con cúter y un hueco redondo para una toma, que se hace con sierra de corona antes de colocar la placa.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Placas de la primera cara</h4>
+              <div>
+                <p>Se empieza por un lado de los montantes y se colocan las placas una al lado de otra, evitando las juntas cruzadas y desplazando las juntas unos 40 cm. Se empieza a atornillar por el centro de la placa o por una esquina, con los tornillos cada 25 cm aproximadamente.</p>
+                <p class="guia-ojo"><b>Ojo:</b> la cabeza del tornillo queda apenas por debajo de la superficie, sin romper el papel. Ni hundida ni sobresaliendo.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de la estructura con las placas de la primera cara colocadas una al lado de otra, con las juntas desplazadas, atornilladas a los montantes, y el resto sin cubrir" focusable="false"><ellipse class="gd-shadow" cx="60.5" cy="111.5" rx="56.0" ry="15.0"/><polygon class="gd-m-conc gd-f-side" points="120.2,133.8 107.8,140.9 107.8,133.1 120.2,126.0"/><polygon class="gd-m-conc gd-f-front" points="4.2,81.1 107.8,140.9 107.8,133.1 4.2,73.3"/><polygon class="gd-m-conc gd-f-top" points="16.6,66.2 120.2,126.0 107.8,133.1 4.2,73.3"/><polygon class="gd-m-steel gd-f-side" points="110.1,124.0 104.4,127.2 104.4,123.0 110.1,119.7"/><polygon class="gd-m-steel gd-f-front" points="14.4,75.2 104.4,127.2 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-top" points="20.0,67.7 110.1,119.7 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-side" points="23.5,70.2 19.0,72.8 19.0,29.4 23.5,26.8"/><polygon class="gd-m-steel gd-f-front" points="15.0,70.6 19.0,72.8 19.0,29.4 15.0,27.1"/><polygon class="gd-m-steel gd-f-top" points="19.5,24.5 23.5,26.8 19.0,29.4 15.0,27.1"/><polygon class="gd-hole" points="22.6,62.1 19.9,63.6 19.9,59.7 22.6,58.2"/><polygon class="gd-hole" points="22.6,49.1 19.9,50.6 19.9,46.7 22.6,45.2"/><polygon class="gd-hole" points="22.6,36.1 19.9,37.6 19.9,33.7 22.6,32.2"/><polygon class="gd-m-steel gd-f-side" points="46.0,83.2 41.5,85.8 41.5,42.4 46.0,39.8"/><polygon class="gd-m-steel gd-f-front" points="37.6,83.6 41.5,85.8 41.5,42.4 37.6,40.1"/><polygon class="gd-m-steel gd-f-top" points="42.1,37.5 46.0,39.8 41.5,42.4 37.6,40.1"/><polygon class="gd-hole" points="45.1,75.1 42.4,76.6 42.4,72.7 45.1,71.2"/><polygon class="gd-hole" points="45.1,62.1 42.4,63.6 42.4,59.7 45.1,58.2"/><polygon class="gd-hole" points="45.1,49.1 42.4,50.6 42.4,46.7 45.1,45.2"/><polygon class="gd-m-steel gd-f-side" points="68.5,96.2 64.0,98.8 64.0,55.4 68.5,52.8"/><polygon class="gd-m-steel gd-f-front" points="60.1,96.6 64.0,98.8 64.0,55.4 60.1,53.1"/><polygon class="gd-m-steel gd-f-top" points="64.6,50.5 68.5,52.8 64.0,55.4 60.1,53.1"/><polygon class="gd-hole" points="67.6,88.1 64.9,89.6 64.9,85.7 67.6,84.2"/><polygon class="gd-hole" points="67.6,75.1 64.9,76.6 64.9,72.7 67.6,71.2"/><polygon class="gd-hole" points="67.6,62.1 64.9,63.6 64.9,59.7 67.6,58.2"/><polygon class="gd-m-steel gd-f-side" points="91.0,109.2 86.5,111.8 86.5,68.4 91.0,65.8"/><polygon class="gd-m-steel gd-f-front" points="82.6,109.6 86.5,111.8 86.5,68.4 82.6,66.2"/><polygon class="gd-m-steel gd-f-top" points="87.1,63.5 91.0,65.8 86.5,68.4 82.6,66.2"/><polygon class="gd-hole" points="90.1,101.1 87.4,102.6 87.4,98.7 90.1,97.2"/><polygon class="gd-hole" points="90.1,88.1 87.4,89.6 87.4,85.7 90.1,84.2"/><polygon class="gd-hole" points="90.1,75.1 87.4,76.6 87.4,72.7 90.1,71.2"/><polygon class="gd-m-steel gd-f-side" points="109.6,120.0 105.1,122.6 105.1,79.2 109.6,76.5"/><polygon class="gd-m-steel gd-f-front" points="101.2,120.3 105.1,122.6 105.1,79.2 101.2,76.9"/><polygon class="gd-m-steel gd-f-top" points="105.7,74.3 109.6,76.5 105.1,79.2 101.2,76.9"/><polygon class="gd-hole" points="108.7,111.8 106.0,113.3 106.0,109.4 108.7,107.9"/><polygon class="gd-hole" points="108.7,98.8 106.0,100.3 106.0,96.4 108.7,94.9"/><polygon class="gd-hole" points="108.7,85.8 106.0,87.3 106.0,83.4 108.7,81.9"/><polygon class="gd-m-board gd-f-side" points="61.4,76.4 59.9,77.2 59.9,55.5 61.4,54.7"/><polygon class="gd-m-board gd-f-front" points="12.9,50.1 59.9,77.2 59.9,55.5 12.9,28.4"/><polygon class="gd-m-board gd-f-top" points="14.4,27.5 61.4,54.7 59.9,55.5 12.9,28.4"/><polygon class="gd-m-board gd-f-side" points="84.2,89.6 82.7,90.4 82.7,68.7 84.2,67.8"/><polygon class="gd-m-board gd-f-front" points="59.9,77.2 82.7,90.4 82.7,68.7 59.9,55.5"/><polygon class="gd-m-board gd-f-top" points="61.4,54.7 84.2,67.8 82.7,68.7 59.9,55.5"/><polygon class="gd-m-board gd-f-side" points="38.9,85.1 37.4,85.9 37.4,64.2 38.9,63.4"/><polygon class="gd-m-board gd-f-front" points="12.9,71.8 37.4,85.9 37.4,64.2 12.9,50.1"/><polygon class="gd-m-board gd-f-top" points="14.4,49.2 38.9,63.4 37.4,64.2 12.9,50.1"/><polygon class="gd-m-board gd-f-side" points="84.2,111.3 82.7,112.1 82.7,90.4 84.2,89.6"/><polygon class="gd-m-board gd-f-front" points="37.4,85.9 82.7,112.1 82.7,90.4 37.4,64.2"/><polygon class="gd-m-board gd-f-top" points="38.9,63.4 84.2,89.6 82.7,90.4 37.4,64.2"/><polygon class="gd-screw" points="15.8,45.3 15.6,44.5 15.2,43.9 14.6,43.6 14.1,43.7 14.0,44.2 14.1,44.9 14.6,45.6 15.2,45.9 15.6,45.8"/><polygon class="gd-hi" points="14.9,44.5 14.8,44.0 14.4,43.8 14.3,44.1 14.4,44.5 14.8,44.7"/><polygon class="gd-screw" points="38.3,58.3 38.1,57.5 37.7,56.9 37.1,56.6 36.7,56.7 36.5,57.2 36.7,57.9 37.1,58.6 37.7,58.9 38.1,58.8"/><polygon class="gd-hi" points="37.5,57.5 37.3,57.0 37.0,56.8 36.8,57.1 37.0,57.5 37.3,57.7"/><polygon class="gd-screw" points="58.3,69.8 58.1,69.1 57.7,68.4 57.1,68.1 56.6,68.2 56.5,68.8 56.6,69.5 57.1,70.1 57.7,70.4 58.1,70.3"/><polygon class="gd-hi" points="57.4,69.0 57.3,68.6 56.9,68.4 56.8,68.6 56.9,69.0 57.3,69.2"/><polygon class="gd-screw" points="63.3,72.7 63.2,72.0 62.7,71.4 62.2,71.0 61.7,71.2 61.5,71.7 61.7,72.4 62.2,73.0 62.7,73.3 63.2,73.2"/><polygon class="gd-hi" points="62.5,71.9 62.3,71.5 62.0,71.3 61.8,71.5 62.0,72.0 62.3,72.2"/><polygon class="gd-screw" points="81.4,83.1 81.2,82.4 80.7,81.8 80.2,81.4 79.7,81.6 79.6,82.1 79.7,82.8 80.2,83.4 80.7,83.7 81.2,83.6"/><polygon class="gd-hi" points="80.5,82.3 80.4,81.9 80.0,81.7 79.8,81.9 80.0,82.4 80.4,82.6"/><polygon class="gd-screw" points="15.8,37.5 15.6,36.7 15.2,36.1 14.6,35.8 14.1,35.9 14.0,36.4 14.1,37.1 14.6,37.8 15.2,38.1 15.6,38.0"/><polygon class="gd-hi" points="14.9,36.7 14.8,36.2 14.4,36.0 14.3,36.3 14.4,36.7 14.8,36.9"/><polygon class="gd-screw" points="38.3,50.5 38.1,49.7 37.7,49.1 37.1,48.8 36.7,48.9 36.5,49.4 36.7,50.1 37.1,50.8 37.7,51.1 38.1,51.0"/><polygon class="gd-hi" points="37.5,49.7 37.3,49.2 37.0,49.0 36.8,49.3 37.0,49.7 37.3,49.9"/><polygon class="gd-screw" points="58.3,62.0 58.1,61.3 57.7,60.6 57.1,60.3 56.6,60.4 56.5,60.9 56.6,61.7 57.1,62.3 57.7,62.6 58.1,62.5"/><polygon class="gd-hi" points="57.4,61.2 57.3,60.8 56.9,60.6 56.8,60.8 56.9,61.2 57.3,61.4"/><polygon class="gd-screw" points="63.3,64.9 63.2,64.2 62.7,63.6 62.2,63.2 61.7,63.4 61.5,63.9 61.7,64.6 62.2,65.2 62.7,65.5 63.2,65.4"/><polygon class="gd-hi" points="62.5,64.1 62.3,63.7 62.0,63.5 61.8,63.7 62.0,64.2 62.3,64.4"/><polygon class="gd-screw" points="81.4,75.3 81.2,74.6 80.7,74.0 80.2,73.6 79.7,73.8 79.6,74.3 79.7,75.0 80.2,75.6 80.7,75.9 81.2,75.8"/><polygon class="gd-hi" points="80.5,74.5 80.4,74.1 80.0,73.9 79.8,74.1 80.0,74.6 80.4,74.8"/><polygon class="gd-screw" points="15.8,67.0 15.6,66.3 15.2,65.6 14.6,65.3 14.1,65.4 14.0,65.9 14.1,66.6 14.6,67.3 15.2,67.6 15.6,67.5"/><polygon class="gd-hi" points="14.9,66.2 14.8,65.7 14.4,65.5 14.3,65.8 14.4,66.2 14.8,66.4"/><polygon class="gd-screw" points="35.8,78.5 35.6,77.8 35.1,77.2 34.6,76.8 34.1,76.9 34.0,77.5 34.1,78.2 34.6,78.8 35.1,79.1 35.6,79.0"/><polygon class="gd-hi" points="34.9,77.7 34.8,77.3 34.4,77.1 34.2,77.3 34.4,77.8 34.8,78.0"/><polygon class="gd-screw" points="40.8,81.4 40.7,80.7 40.2,80.1 39.6,79.8 39.2,79.9 39.0,80.4 39.2,81.1 39.6,81.7 40.2,82.1 40.7,81.9"/><polygon class="gd-hi" points="40.0,80.6 39.8,80.2 39.5,80.0 39.3,80.2 39.5,80.7 39.8,80.9"/><polygon class="gd-screw" points="60.8,93.0 60.6,92.3 60.2,91.6 59.6,91.3 59.2,91.4 59.0,91.9 59.2,92.6 59.6,93.3 60.2,93.6 60.6,93.5"/><polygon class="gd-hi" points="60.0,92.2 59.8,91.7 59.5,91.5 59.3,91.8 59.5,92.2 59.8,92.4"/><polygon class="gd-screw" points="81.4,104.8 81.2,104.1 80.7,103.5 80.2,103.2 79.7,103.3 79.6,103.8 79.7,104.5 80.2,105.1 80.7,105.5 81.2,105.3"/><polygon class="gd-hi" points="80.5,104.0 80.4,103.6 80.0,103.4 79.8,103.6 80.0,104.1 80.4,104.3"/><polygon class="gd-screw" points="15.8,59.2 15.6,58.5 15.2,57.8 14.6,57.5 14.1,57.6 14.0,58.1 14.1,58.8 14.6,59.5 15.2,59.8 15.6,59.7"/><polygon class="gd-hi" points="14.9,58.4 14.8,57.9 14.4,57.7 14.3,58.0 14.4,58.4 14.8,58.6"/><polygon class="gd-screw" points="35.8,70.7 35.6,70.0 35.1,69.4 34.6,69.0 34.1,69.1 34.0,69.7 34.1,70.4 34.6,71.0 35.1,71.3 35.6,71.2"/><polygon class="gd-hi" points="34.9,69.9 34.8,69.5 34.4,69.3 34.2,69.5 34.4,70.0 34.8,70.2"/><polygon class="gd-screw" points="40.8,73.6 40.7,72.9 40.2,72.3 39.6,72.0 39.2,72.1 39.0,72.6 39.2,73.3 39.6,73.9 40.2,74.3 40.7,74.1"/><polygon class="gd-hi" points="40.0,72.8 39.8,72.4 39.5,72.2 39.3,72.4 39.5,72.9 39.8,73.1"/><polygon class="gd-screw" points="60.8,85.2 60.6,84.5 60.2,83.8 59.6,83.5 59.2,83.6 59.0,84.1 59.2,84.8 59.6,85.5 60.2,85.8 60.6,85.7"/><polygon class="gd-hi" points="60.0,84.4 59.8,83.9 59.5,83.7 59.3,84.0 59.5,84.4 59.8,84.6"/><polygon class="gd-screw" points="81.4,97.0 81.2,96.3 80.7,95.7 80.2,95.4 79.7,95.5 79.6,96.0 79.7,96.7 80.2,97.3 80.7,97.7 81.2,97.5"/><polygon class="gd-hi" points="80.5,96.2 80.4,95.8 80.0,95.6 79.8,95.8 80.0,96.3 80.4,96.5"/><polygon class="gd-m-steel gd-f-side" points="110.1,76.3 104.4,79.5 104.4,75.2 110.1,72.0"/><polygon class="gd-m-steel gd-f-front" points="14.4,27.5 104.4,79.5 104.4,75.2 14.4,23.2"/><polygon class="gd-m-steel gd-f-top" points="20.0,20.0 110.1,72.0 104.4,75.2 14.4,23.2"/><polygon class="gd-m-conc gd-f-side" points="120.2,74.0 107.8,81.1 107.8,73.3 120.2,66.2"/><polygon class="gd-m-conc gd-f-front" points="4.2,21.3 107.8,81.1 107.8,73.3 4.2,13.5"/><polygon class="gd-m-conc gd-f-top" points="16.6,6.4 120.2,66.2 107.8,73.3 4.2,13.5"/><line class="gd-leader-h" x1="59.9" y1="66.8" x2="156" y2="37.0"/><line class="gd-leader" x1="59.9" y1="66.8" x2="156" y2="37.0"/><line class="gd-leader-h" x1="69.2" y1="72.2" x2="156" y2="69.0"/><line class="gd-leader" x1="69.2" y1="72.2" x2="156" y2="69.0"/><line class="gd-leader-h" x1="59.9" y1="92.4" x2="156" y2="97.0"/><line class="gd-leader" x1="59.9" y1="92.4" x2="156" y2="97.0"/><line class="gd-leader-h" x1="103.1" y1="107.5" x2="156" y2="123.0"/><line class="gd-leader" x1="103.1" y1="107.5" x2="156" y2="123.0"/><circle class="gd-pt" cx="59.9" cy="66.8" r="2.4"/><circle class="gd-pt" cx="69.2" cy="72.2" r="2.4"/><circle class="gd-pt" cx="59.9" cy="92.4" r="2.4"/><circle class="gd-pt" cx="103.1" cy="107.5" r="2.4"/><text class="gd-t" x="160" y="40.0"><tspan x="160" dy="0">Juntas</tspan><tspan x="160" dy="9.5">desplazadas</tspan></text><text class="gd-t" x="160" y="72.0"><tspan x="160" dy="0">Placa de la</tspan><tspan x="160" dy="9.5">primera cara</tspan></text><text class="gd-t" x="160" y="100.0"><tspan x="160" dy="0">Tornillos</tspan></text><text class="gd-t" x="160" y="126.0"><tspan x="160" dy="0">Lado todavía</tspan><tspan x="160" dy="9.5">sin cubrir</tspan></text></svg><figcaption>Las placas de la primera cara, atornilladas a los montantes y colocadas una al lado de otra con las juntas desplazadas entre una fila y la otra. El resto de la estructura sigue sin cubrir. La cantidad y la separación de los tornillos no están a escala.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Instalaciones y aislación</h4>
+              <div>
+                <p>Con un lado ya cerrado y antes de cerrar el otro, se pasan los cables y las cañerías por las perforaciones de los montantes y se coloca la aislación entre los perfiles, que sirve para lo térmico y para lo acústico.</p>
+                <p class="guia-ojo"><b>Ojo:</b> las placas solas aíslan poco por su espesor. Lo que mejora la acústica es el material absorbente que va adentro de la pared.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de la estructura con la primera cara ya cerrada al fondo, la aislación entre los montantes y una cañería y un cable pasando por las perforaciones" focusable="false"><ellipse class="gd-shadow" cx="60.5" cy="111.5" rx="56.0" ry="15.0"/><polygon class="gd-m-conc gd-f-side" points="120.2,133.8 107.8,140.9 107.8,133.1 120.2,126.0"/><polygon class="gd-m-conc gd-f-front" points="4.2,81.1 107.8,140.9 107.8,133.1 4.2,73.3"/><polygon class="gd-m-conc gd-f-top" points="16.6,66.2 120.2,126.0 107.8,133.1 4.2,73.3"/><polygon class="gd-m-steel gd-f-side" points="110.1,124.0 104.4,127.2 104.4,123.0 110.1,119.7"/><polygon class="gd-m-steel gd-f-front" points="14.4,75.2 104.4,127.2 104.4,123.0 14.4,71.0"/><polygon class="gd-m-steel gd-f-top" points="20.0,67.7 110.1,119.7 104.4,123.0 14.4,71.0"/><polygon class="gd-m-board gd-f-side" points="111.6,118.8 109.8,119.8 109.8,76.4 111.6,75.4"/><polygon class="gd-m-board gd-f-front" points="19.8,67.8 109.8,119.8 109.8,76.4 19.8,24.4"/><polygon class="gd-m-board gd-f-top" points="21.6,23.4 111.6,75.4 109.8,76.4 19.8,24.4"/><polygon class="gd-m-ins gd-f-side" points="42.1,81.0 38.7,82.9 38.7,39.5 42.1,37.5"/><polygon class="gd-m-ins gd-f-front" points="20.1,72.2 38.7,82.9 38.7,39.5 20.1,28.8"/><polygon class="gd-m-ins gd-f-top" points="23.5,26.8 42.1,37.5 38.7,39.5 20.1,28.8"/><path class="gd-ins-w" d="M21.0 64.0 L24.4 64.8 L27.7 67.9 L31.1 68.6 L34.4 71.8 L37.8 72.5"/><path class="gd-ins-w" d="M21.0 53.6 L24.4 54.4 L27.7 57.5 L31.1 58.2 L34.4 61.4 L37.8 62.1"/><path class="gd-ins-w" d="M21.0 43.2 L24.4 44.0 L27.7 47.1 L31.1 47.8 L34.4 51.0 L37.8 51.7"/><path class="gd-ins-w" d="M21.0 34.1 L24.4 34.9 L27.7 38.0 L31.1 38.7 L34.4 41.9 L37.8 42.6"/><polygon class="gd-m-ins gd-f-side" points="64.6,94.0 61.2,95.9 61.2,52.5 64.6,50.5"/><polygon class="gd-m-ins gd-f-front" points="42.6,85.2 61.2,95.9 61.2,52.5 42.6,41.8"/><polygon class="gd-m-ins gd-f-top" points="46.0,39.8 64.6,50.5 61.2,52.5 42.6,41.8"/><path class="gd-ins-w" d="M43.5 77.0 L46.9 77.8 L50.2 80.9 L53.6 81.6 L56.9 84.8 L60.3 85.5"/><path class="gd-ins-w" d="M43.5 66.6 L46.9 67.4 L50.2 70.5 L53.6 71.2 L56.9 74.4 L60.3 75.1"/><path class="gd-ins-w" d="M43.5 56.2 L46.9 57.0 L50.2 60.1 L53.6 60.8 L56.9 64.0 L60.3 64.7"/><path class="gd-ins-w" d="M43.5 47.1 L46.9 47.9 L50.2 51.0 L53.6 51.7 L56.9 54.9 L60.3 55.6"/><polygon class="gd-m-ins gd-f-side" points="87.1,107.0 83.7,108.9 83.7,65.5 87.1,63.5"/><polygon class="gd-m-ins gd-f-front" points="65.1,98.2 83.7,108.9 83.7,65.5 65.1,54.8"/><polygon class="gd-m-ins gd-f-top" points="68.5,52.8 87.1,63.5 83.7,65.5 65.1,54.8"/><path class="gd-ins-w" d="M66.0 90.0 L69.4 90.8 L72.8 93.9 L76.1 94.6 L79.5 97.8 L82.8 98.5"/><path class="gd-ins-w" d="M66.0 79.6 L69.4 80.4 L72.8 83.5 L76.1 84.2 L79.5 87.4 L82.8 88.1"/><path class="gd-ins-w" d="M66.0 69.2 L69.4 70.0 L72.8 73.1 L76.1 73.8 L79.5 77.0 L82.8 77.7"/><path class="gd-ins-w" d="M66.0 60.1 L69.4 60.9 L72.8 64.0 L76.1 64.7 L79.5 67.9 L82.8 68.6"/><polygon class="gd-m-ins gd-f-side" points="105.7,117.7 102.3,119.6 102.3,76.2 105.7,74.3"/><polygon class="gd-m-ins gd-f-front" points="87.7,111.2 102.3,119.6 102.3,76.2 87.7,67.8"/><polygon class="gd-m-ins gd-f-top" points="91.0,65.8 105.7,74.3 102.3,76.2 87.7,67.8"/><path class="gd-ins-w" d="M88.6 103.0 L91.1 103.3 L93.7 106.0 L96.3 106.3 L98.8 108.9 L101.4 109.2"/><path class="gd-ins-w" d="M88.6 92.6 L91.1 92.9 L93.7 95.6 L96.3 95.9 L98.8 98.5 L101.4 98.8"/><path class="gd-ins-w" d="M88.6 82.2 L91.1 82.5 L93.7 85.2 L96.3 85.5 L98.8 88.1 L101.4 88.4"/><path class="gd-ins-w" d="M88.6 73.1 L91.1 73.4 L93.7 76.1 L96.3 76.4 L98.8 79.0 L101.4 79.3"/><polygon class="gd-m-steel gd-f-side" points="23.5,70.2 19.0,72.8 19.0,29.4 23.5,26.8"/><polygon class="gd-m-steel gd-f-front" points="15.0,70.6 19.0,72.8 19.0,29.4 15.0,27.1"/><polygon class="gd-m-steel gd-f-top" points="19.5,24.5 23.5,26.8 19.0,29.4 15.0,27.1"/><polygon class="gd-hole" points="22.6,62.1 19.9,63.6 19.9,59.7 22.6,58.2"/><polygon class="gd-hole" points="22.6,49.1 19.9,50.6 19.9,46.7 22.6,45.2"/><polygon class="gd-hole" points="22.6,36.1 19.9,37.6 19.9,33.7 22.6,32.2"/><polygon class="gd-m-steel gd-f-side" points="46.0,83.2 41.5,85.8 41.5,42.4 46.0,39.8"/><polygon class="gd-m-steel gd-f-front" points="37.6,83.6 41.5,85.8 41.5,42.4 37.6,40.1"/><polygon class="gd-m-steel gd-f-top" points="42.1,37.5 46.0,39.8 41.5,42.4 37.6,40.1"/><polygon class="gd-hole" points="45.1,75.1 42.4,76.6 42.4,72.7 45.1,71.2"/><polygon class="gd-hole" points="45.1,62.1 42.4,63.6 42.4,59.7 45.1,58.2"/><polygon class="gd-hole" points="45.1,49.1 42.4,50.6 42.4,46.7 45.1,45.2"/><polygon class="gd-m-steel gd-f-side" points="68.5,96.2 64.0,98.8 64.0,55.4 68.5,52.8"/><polygon class="gd-m-steel gd-f-front" points="60.1,96.6 64.0,98.8 64.0,55.4 60.1,53.1"/><polygon class="gd-m-steel gd-f-top" points="64.6,50.5 68.5,52.8 64.0,55.4 60.1,53.1"/><polygon class="gd-hole" points="67.6,88.1 64.9,89.6 64.9,85.7 67.6,84.2"/><polygon class="gd-hole" points="67.6,75.1 64.9,76.6 64.9,72.7 67.6,71.2"/><polygon class="gd-hole" points="67.6,62.1 64.9,63.6 64.9,59.7 67.6,58.2"/><polygon class="gd-m-steel gd-f-side" points="91.0,109.2 86.5,111.8 86.5,68.4 91.0,65.8"/><polygon class="gd-m-steel gd-f-front" points="82.6,109.6 86.5,111.8 86.5,68.4 82.6,66.2"/><polygon class="gd-m-steel gd-f-top" points="87.1,63.5 91.0,65.8 86.5,68.4 82.6,66.2"/><polygon class="gd-hole" points="90.1,101.1 87.4,102.6 87.4,98.7 90.1,97.2"/><polygon class="gd-hole" points="90.1,88.1 87.4,89.6 87.4,85.7 90.1,84.2"/><polygon class="gd-hole" points="90.1,75.1 87.4,76.6 87.4,72.7 90.1,71.2"/><polygon class="gd-m-steel gd-f-side" points="109.6,120.0 105.1,122.6 105.1,79.2 109.6,76.5"/><polygon class="gd-m-steel gd-f-front" points="101.2,120.3 105.1,122.6 105.1,79.2 101.2,76.9"/><polygon class="gd-m-steel gd-f-top" points="105.7,74.3 109.6,76.5 105.1,79.2 101.2,76.9"/><polygon class="gd-hole" points="108.7,111.8 106.0,113.3 106.0,109.4 108.7,107.9"/><polygon class="gd-hole" points="108.7,98.8 106.0,100.3 106.0,96.4 108.7,94.9"/><polygon class="gd-hole" points="108.7,85.8 106.0,87.3 106.0,83.4 108.7,81.9"/><polygon class="gd-m-conduit gd-f-side" points="40.5,61.5 38.4,62.7 38.4,60.2 40.5,59.0"/><polygon class="gd-m-conduit gd-f-front" points="19.8,52.0 38.4,62.7 38.4,60.2 19.8,49.5"/><polygon class="gd-m-conduit gd-f-top" points="21.9,48.3 40.5,59.0 38.4,60.2 19.8,49.5"/><polygon class="gd-m-cable gd-f-side" points="40.3,49.2 39.0,50.0 39.0,48.5 40.3,47.8"/><polygon class="gd-m-cable gd-f-front" points="20.5,39.2 39.0,50.0 39.0,48.5 20.5,37.8"/><polygon class="gd-m-cable gd-f-top" points="21.7,37.1 40.3,47.8 39.0,48.5 20.5,37.8"/><polygon class="gd-m-conduit gd-f-side" points="63.0,74.5 60.9,75.7 60.9,73.2 63.0,72.0"/><polygon class="gd-m-conduit gd-f-front" points="42.3,65.0 60.9,75.7 60.9,73.2 42.3,62.5"/><polygon class="gd-m-conduit gd-f-top" points="44.4,61.3 63.0,72.0 60.9,73.2 42.3,62.5"/><polygon class="gd-m-cable gd-f-side" points="62.8,62.2 61.5,63.0 61.5,61.5 62.8,60.8"/><polygon class="gd-m-cable gd-f-front" points="43.0,52.2 61.5,63.0 61.5,61.5 43.0,50.8"/><polygon class="gd-m-cable gd-f-top" points="44.2,50.1 62.8,60.8 61.5,61.5 43.0,50.8"/><polygon class="gd-m-conduit gd-f-side" points="85.5,87.5 83.4,88.7 83.4,86.2 85.5,85.0"/><polygon class="gd-m-conduit gd-f-front" points="64.8,78.0 83.4,88.7 83.4,86.2 64.8,75.5"/><polygon class="gd-m-conduit gd-f-top" points="66.9,74.3 85.5,85.0 83.4,86.2 64.8,75.5"/><polygon class="gd-m-cable gd-f-side" points="85.3,75.2 84.1,76.0 84.1,74.5 85.3,73.8"/><polygon class="gd-m-cable gd-f-front" points="65.5,65.2 84.1,76.0 84.1,74.5 65.5,63.8"/><polygon class="gd-m-cable gd-f-top" points="66.7,63.1 85.3,73.8 84.1,74.5 65.5,63.8"/><polygon class="gd-m-conduit gd-f-side" points="104.1,98.2 102.0,99.4 102.0,97.0 104.1,95.7"/><polygon class="gd-m-conduit gd-f-front" points="87.3,91.0 102.0,99.4 102.0,97.0 87.3,88.5"/><polygon class="gd-m-conduit gd-f-top" points="89.5,87.3 104.1,95.7 102.0,97.0 87.3,88.5"/><polygon class="gd-m-cable gd-f-side" points="103.9,86.0 102.6,86.7 102.6,85.3 103.9,84.5"/><polygon class="gd-m-cable gd-f-front" points="88.0,78.2 102.6,86.7 102.6,85.3 88.0,76.8"/><polygon class="gd-m-cable gd-f-top" points="89.2,76.1 103.9,84.5 102.6,85.3 88.0,76.8"/><polygon class="gd-m-steel gd-f-side" points="110.1,76.3 104.4,79.5 104.4,75.2 110.1,72.0"/><polygon class="gd-m-steel gd-f-front" points="14.4,27.5 104.4,79.5 104.4,75.2 14.4,23.2"/><polygon class="gd-m-steel gd-f-top" points="20.0,20.0 110.1,72.0 104.4,75.2 14.4,23.2"/><polygon class="gd-m-conc gd-f-side" points="120.2,74.0 107.8,81.1 107.8,73.3 120.2,66.2"/><polygon class="gd-m-conc gd-f-front" points="4.2,21.3 107.8,81.1 107.8,73.3 4.2,13.5"/><polygon class="gd-m-conc gd-f-top" points="16.6,6.4 120.2,66.2 107.8,73.3 4.2,13.5"/><line class="gd-leader-h" x1="49.9" y1="80.7" x2="156" y2="33.0"/><line class="gd-leader" x1="49.9" y1="80.7" x2="156" y2="33.0"/><line class="gd-leader-h" x1="72.1" y1="80.9" x2="156" y2="71.0"/><line class="gd-leader" x1="72.1" y1="80.9" x2="156" y2="71.0"/><line class="gd-leader-h" x1="95.3" y1="81.8" x2="156" y2="93.0"/><line class="gd-leader" x1="95.3" y1="81.8" x2="156" y2="93.0"/><line class="gd-leader-h" x1="110.5" y1="110.3" x2="156" y2="117.0"/><line class="gd-leader" x1="110.5" y1="110.3" x2="156" y2="117.0"/><circle class="gd-pt" cx="49.9" cy="80.7" r="2.4"/><circle class="gd-pt" cx="72.1" cy="80.9" r="2.4"/><circle class="gd-pt" cx="95.3" cy="81.8" r="2.4"/><circle class="gd-pt" cx="110.5" cy="110.3" r="2.4"/><text class="gd-t" x="160" y="36.0"><tspan x="160" dy="0">Aislación</tspan></text><text class="gd-t" x="160" y="74.0"><tspan x="160" dy="0">Cañería</tspan></text><text class="gd-t" x="160" y="96.0"><tspan x="160" dy="0">Cable</tspan></text><text class="gd-t" x="160" y="120.0"><tspan x="160" dy="0">Primera cara</tspan><tspan x="160" dy="9.5">ya cerrada</tspan></text></svg><figcaption>Con la primera cara ya cerrada al fondo, la aislación entre los montantes y una cañería y un cable que pasan por las perforaciones. Después se cierra el otro lado.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Placas de la segunda cara</h4>
+              <div>
+                <p>Con las instalaciones y la aislación en su lugar, se colocan las placas del otro lado de la misma manera y la pared queda cerrada.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Corte de la pared visto desde arriba, con una placa de cada lado, los montantes en forma de C y la aislación en el medio, y las dos caras atornilladas" focusable="false"><rect class="gd-board" x="12" y="43" width="136" height="9"/><rect class="gd-paper" x="12" y="43" width="136" height="1.4"/><rect class="gd-paper" x="12" y="50.6" width="136" height="1.4"/><rect class="gd-board" x="12" y="98" width="136" height="9"/><rect class="gd-paper" x="12" y="98" width="136" height="1.4"/><rect class="gd-paper" x="12" y="105.6" width="136" height="1.4"/><rect class="gd-ins" x="32" y="55" width="38" height="40"/><rect class="gd-ins" x="72" y="55" width="38" height="40"/><rect class="gd-ins" x="112" y="55" width="38" height="40"/><path class="gd-cprof-o" d="M40 55.5 L40 52 L30 52 L30 98 L40 98 L40 94.5"/><path class="gd-cprof" d="M40 55.5 L40 52 L30 52 L30 98 L40 98 L40 94.5"/><rect class="gd-screw" x="34" y="43" width="2" height="10"/><rect class="gd-screw" x="34" y="97" width="2" height="10"/><path class="gd-cprof-o" d="M80 55.5 L80 52 L70 52 L70 98 L80 98 L80 94.5"/><path class="gd-cprof" d="M80 55.5 L80 52 L70 52 L70 98 L80 98 L80 94.5"/><rect class="gd-screw" x="74" y="43" width="2" height="10"/><rect class="gd-screw" x="74" y="97" width="2" height="10"/><path class="gd-cprof-o" d="M120 55.5 L120 52 L110 52 L110 98 L120 98 L120 94.5"/><path class="gd-cprof" d="M120 55.5 L120 52 L110 52 L110 98 L120 98 L120 94.5"/><rect class="gd-screw" x="114" y="43" width="2" height="10"/><rect class="gd-screw" x="114" y="97" width="2" height="10"/><text class="gd-t" x="12" y="130">Corte de la pared, visto desde arriba</text><line class="gd-leader-h" x1="146.0" y1="48.0" x2="156" y2="45.0"/><line class="gd-leader" x1="146.0" y1="48.0" x2="156" y2="45.0"/><line class="gd-leader-h" x1="128.0" y1="76.0" x2="156" y2="77.0"/><line class="gd-leader" x1="128.0" y1="76.0" x2="156" y2="77.0"/><line class="gd-leader-h" x1="146.0" y1="102.0" x2="156" y2="109.0"/><line class="gd-leader" x1="146.0" y1="102.0" x2="156" y2="109.0"/><circle class="gd-pt" cx="146.0" cy="48.0" r="2.4"/><circle class="gd-pt" cx="128.0" cy="76.0" r="2.4"/><circle class="gd-pt" cx="146.0" cy="102.0" r="2.4"/><text class="gd-t" x="160" y="48.0"><tspan x="160" dy="0">Placa de la</tspan><tspan x="160" dy="9.5">primera cara</tspan></text><text class="gd-t" x="160" y="80.0"><tspan x="160" dy="0">Aislación e</tspan><tspan x="160" dy="9.5">instalaciones</tspan></text><text class="gd-t" x="160" y="112.0"><tspan x="160" dy="0">Placa de la</tspan><tspan x="160" dy="9.5">segunda cara</tspan></text></svg><figcaption>Corte de la pared visto desde arriba, con las dos caras cerradas: una placa de cada lado atornillada a los montantes, que tienen forma de C, y la aislación en el medio.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Juntas y terminación</h4>
+              <div>
+                <p>Se cubren las juntas con cinta y masilla y se tapan las cabezas de los tornillos. En general hacen falta dos pasadas de masilla. Una vez seca, se quitan los restos y se lija toda la pared, que queda lista para pintar. Si aparece alguna fisura durante la instalación, se repara.</p>
+                <p>Sobre la placa también se puede colocar madera o cerámicos, con el adhesivo recomendado para cada material.</p>
+                <p class="guia-ojo"><b>Ojo:</b> la placa retrasa el paso del fuego, pero cualquier perforación o espacio sin cerrar lo deja pasar.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Corte de la unión entre dos placas, con la cinta cubierta por dos pasadas de masilla y la cabeza de un tornillo tapada con masilla" focusable="false"><polygon class="gd-board" points="12,66 77,66 80,70 80,86 12,86"/><polygon class="gd-board" points="148,66 83,66 80,70 80,86 148,86"/><rect class="gd-tape" x="46" y="65.4" width="68" height="1.5"/><path class="gd-putty2" d="M40 66 Q80 55 120 66 Z"/><path class="gd-putty1" d="M52 66 Q80 58 108 66 Z"/><rect class="gd-screw" x="129" y="66" width="2" height="20"/><path class="gd-putty1" d="M123 66 Q130 61 137 66 Z"/><text class="gd-t" x="12" y="108">Corte de la unión entre dos placas</text><line class="gd-leader-h" x1="130.0" y1="62.0" x2="156" y2="19.0"/><line class="gd-leader" x1="130.0" y1="62.0" x2="156" y2="19.0"/><line class="gd-leader-h" x1="114.0" y1="64.0" x2="156" y2="49.0"/><line class="gd-leader" x1="114.0" y1="64.0" x2="156" y2="49.0"/><circle class="gd-pt" cx="130.0" cy="62.0" r="2.4"/><circle class="gd-pt" cx="114.0" cy="64.0" r="2.4"/><text class="gd-t" x="160" y="22.0"><tspan x="160" dy="0">Cabeza de</tspan><tspan x="160" dy="9.5">tornillo tapada</tspan></text><text class="gd-t" x="160" y="52.0"><tspan x="160" dy="0">Cinta y masilla,</tspan><tspan x="160" dy="9.5">dos pasadas</tspan></text></svg><figcaption>Corte de la unión entre dos placas: la cinta sobre la junta, cubierta con dos pasadas de masilla, y la cabeza de un tornillo tapada con masilla. Los espesores están exagerados para que se vean.</figcaption></figure>
+            </li>
+          
+          </ol>
+        </div>
+
+        <div class="guia-panel" data-guia-panel="cielorraso">
+          <p class="guia-warn">Según la altura del espacio sobre el cielorraso, el soporte del que se cuelga y el tipo de placa, el diseño estructural se valida con el fabricante de los perfiles.</p>
+          <p class="guia-sub">Antes de empezar</p>
+          <div class="guia-list guia-pre">
+          <div class="guia-step">
+            <h4>Herramientas</h4>
+            <div><p>Nivel láser o manguera de niveles, tiralíneas, cinta métrica, taladro, atornillador, tijera corta lata, cúter, cepillo para refilar las placas, espátulas de varios anchos y lijadora.</p></div>
+          </div>
+          </div>
+          <p class="guia-sub">Los pasos</p>
+          <ol class="guia-list">
+            <li class="guia-step">
+              <h4>Replanteo</h4>
+              <div>
+                <p>Con un nivel láser o una manguera de niveles se marca la altura del cielorraso en cada esquina, se pasa esa marca a todas las paredes y se traza la línea con un tiralíneas.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de un ambiente con una línea de nivel marcada y trazada sobre las paredes, con una marca en cada esquina" focusable="false"><polygon class="gd-m-conc gd-f-side" points="111.8,85.7 60.9,115.1 60.9,110.9 111.8,81.5"/><polygon class="gd-m-conc gd-f-front" points="-0.9,79.4 60.9,115.1 60.9,110.9 -0.9,75.2"/><polygon class="gd-m-conc gd-f-top" points="50.0,45.8 111.8,81.5 60.9,110.9 -0.9,75.2"/><polygon class="gd-m-board gd-f-side" points="111.8,81.5 108.2,83.6 108.2,41.6 111.8,39.5"/><polygon class="gd-m-board gd-f-front" points="46.4,47.9 108.2,83.6 108.2,41.6 46.4,5.9"/><polygon class="gd-m-board gd-f-top" points="50.0,3.8 111.8,39.5 108.2,41.6 46.4,5.9"/><polygon class="gd-m-board gd-f-side" points="50.0,50.0 2.7,77.3 2.7,35.3 50.0,8.0"/><polygon class="gd-m-board gd-f-front" points="-0.9,75.2 2.7,77.3 2.7,35.3 -0.9,33.2"/><polygon class="gd-m-board gd-f-top" points="46.4,5.9 50.0,8.0 2.7,35.3 -0.9,33.2"/><line class="gd-cut" x1="50.0" y1="24.8" x2="107.3" y2="57.9"/><line class="gd-cut" x1="50.0" y1="24.8" x2="2.7" y2="52.1"/><polygon class="gd-mark" points="51.7,25.8 51.4,24.4 50.5,23.2 49.5,22.6 48.6,22.8 48.3,23.8 48.6,25.2 49.5,26.4 50.5,27.0 51.4,26.8"/><polygon class="gd-mark" points="108.1,58.3 107.8,57.0 106.9,55.8 105.8,55.1 105.0,55.4 104.7,56.4 105.0,57.7 105.8,58.9 106.9,59.6 107.8,59.3"/><polygon class="gd-mark" points="1.9,52.6 2.2,51.2 3.1,50.0 4.2,49.4 5.0,49.6 5.4,50.6 5.0,51.9 4.2,53.2 3.1,53.8 2.2,53.6"/><line class="gd-leader-h" x1="50.0" y1="24.8" x2="156" y2="37.0"/><line class="gd-leader" x1="50.0" y1="24.8" x2="156" y2="37.0"/><line class="gd-leader-h" x1="86.4" y1="45.8" x2="156" y2="75.0"/><line class="gd-leader" x1="86.4" y1="45.8" x2="156" y2="75.0"/><line class="gd-leader-h" x1="50.0" y1="86.8" x2="156" y2="115.0"/><line class="gd-leader" x1="50.0" y1="86.8" x2="156" y2="115.0"/><circle class="gd-pt" cx="50.0" cy="24.8" r="2.4"/><circle class="gd-pt" cx="86.4" cy="45.8" r="2.4"/><circle class="gd-pt" cx="50.0" cy="86.8" r="2.4"/><text class="gd-t" x="160" y="40.0"><tspan x="160" dy="0">Marca de nivel</tspan><tspan x="160" dy="9.5">en cada esquina</tspan></text><text class="gd-t" x="160" y="78.0"><tspan x="160" dy="0">Línea de nivel</tspan><tspan x="160" dy="9.5">trazada en las</tspan><tspan x="160" dy="9.5">paredes</tspan></text><text class="gd-t" x="160" y="118.0"><tspan x="160" dy="0">Piso</tspan></text></svg><figcaption>Un ambiente con la altura del cielorraso marcada en cada esquina y trazada como una línea de nivel sobre las paredes.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Guía de borde</h4>
+              <div>
+                <p>Si se coloca un ángulo perimetral siguiendo esa línea, sirve solo para ubicar el nivel. No se fija a él ninguna otra parte de la estructura ni las placas. Se fija a las paredes con no más de 0,61 m entre fijaciones, con clavos de acero, clavos de impacto, o chazos y tornillos, según el material del muro.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva del encuentro entre la pared y el techo, con un ángulo perimetral fijado a la pared y una placa a la altura del nivel, separada del muro y sin fijar al ángulo" focusable="false"><polygon class="gd-m-conc gd-f-side" points="114.1,113.2 109.8,115.8 109.8,65.8 114.1,63.2"/><polygon class="gd-m-conc gd-f-front" points="29.7,69.5 109.8,115.8 109.8,65.8 29.7,19.5"/><polygon class="gd-m-conc gd-f-top" points="34.0,17.0 114.1,63.2 109.8,65.8 29.7,19.5"/><polygon class="gd-m-conc gd-f-side" points="114.1,63.2 96.8,73.2 96.8,65.8 114.1,55.8"/><polygon class="gd-m-conc gd-f-front" points="16.7,27.0 96.8,73.2 96.8,65.8 16.7,19.5"/><polygon class="gd-m-conc gd-f-top" points="34.0,9.5 114.1,55.8 96.8,65.8 16.7,19.5"/><polygon class="gd-m-steel gd-f-side" points="101.1,89.5 100.1,90.1 100.1,81.3 101.1,80.8"/><polygon class="gd-m-steel gd-f-front" points="33.0,51.3 100.1,90.1 100.1,81.3 33.0,42.6"/><polygon class="gd-m-steel gd-f-top" points="34.0,42.0 101.1,80.8 100.1,81.3 33.0,42.6"/><polygon class="gd-m-steel gd-f-side" points="101.1,81.9 94.6,85.6 94.6,84.5 101.1,80.8"/><polygon class="gd-m-steel gd-f-front" points="27.5,46.9 94.6,85.6 94.6,84.5 27.5,45.8"/><polygon class="gd-m-steel gd-f-top" points="34.0,42.0 101.1,80.8 94.6,84.5 27.5,45.8"/><polygon class="gd-screw" points="44.7,53.7 44.6,53.0 44.1,52.4 43.6,52.1 43.2,52.2 43.0,52.7 43.2,53.4 43.6,54.0 44.1,54.3 44.6,54.2"/><polygon class="gd-hi" points="43.9,52.9 43.8,52.5 43.4,52.3 43.3,52.5 43.4,53.0 43.8,53.2"/><polygon class="gd-screw" points="67.5,66.8 67.3,66.1 66.9,65.5 66.3,65.2 65.9,65.3 65.7,65.8 65.9,66.5 66.3,67.1 66.9,67.4 67.3,67.3"/><polygon class="gd-hi" points="66.7,66.1 66.5,65.6 66.2,65.4 66.0,65.7 66.2,66.1 66.5,66.3"/><polygon class="gd-screw" points="90.2,79.9 90.0,79.3 89.6,78.6 89.0,78.3 88.6,78.4 88.5,78.9 88.6,79.6 89.0,80.2 89.6,80.5 90.0,80.4"/><polygon class="gd-hi" points="89.4,79.2 89.2,78.8 88.9,78.6 88.7,78.8 88.9,79.2 89.2,79.4"/><polygon class="gd-m-board gd-f-side" points="92.5,88.0 68.6,101.8 68.6,100.1 92.5,86.4"/><polygon class="gd-m-board gd-f-front" points="1.5,63.0 68.6,101.8 68.6,100.1 1.5,61.4"/><polygon class="gd-m-board gd-f-top" points="25.3,47.6 92.5,86.4 68.6,100.1 1.5,61.4"/><line class="gd-leader-h" x1="87.0" y1="76.4" x2="156" y2="31.0"/><line class="gd-leader" x1="87.0" y1="76.4" x2="156" y2="31.0"/><line class="gd-leader-h" x1="89.3" y1="79.4" x2="156" y2="73.0"/><line class="gd-leader" x1="89.3" y1="79.4" x2="156" y2="73.0"/><line class="gd-leader-h" x1="64.3" y1="85.1" x2="156" y2="105.0"/><line class="gd-leader" x1="64.3" y1="85.1" x2="156" y2="105.0"/><circle class="gd-pt" cx="87.0" cy="76.4" r="2.4"/><circle class="gd-pt" cx="89.3" cy="79.4" r="2.4"/><circle class="gd-pt" cx="64.3" cy="85.1" r="2.4"/><text class="gd-t" x="160" y="34.0"><tspan x="160" dy="0">Ángulo perimetral:</tspan><tspan x="160" dy="9.5">guía de nivel</tspan></text><text class="gd-t" x="160" y="76.0"><tspan x="160" dy="0">Fijación al muro</tspan></text><text class="gd-t" x="160" y="108.0"><tspan x="160" dy="0">Placa a ese nivel,</tspan><tspan x="160" dy="9.5">separada del muro,</tspan><tspan x="160" dy="9.5">sin fijar al ángulo</tspan></text></svg><figcaption>El ángulo perimetral, que es opcional, se fija a la pared y marca el nivel. Las placas quedan a esa altura, separadas del muro y sin fijar al ángulo. El tamaño de la separación está exagerado.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Suspensión</h4>
+              <div>
+                <p>Se instalan los elementos que cuelgan la estructura del techo: pueden ser ángulos, perfiles, guayas o alambre galvanizado. Las fijaciones se eligen según el material del techo y se controla que queden a plomo. Las cuelgas van como máximo a 90 cm entre sí; para fijarlas al techo se usan, por ejemplo, chazos expansivos de plástico de 1/4 de pulgada.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva del techo con varias cuelgas fijadas arriba y un perfil colgado de ellas, a la altura marcada" focusable="false"><polygon class="gd-m-conc gd-f-side" points="120.3,77.9 104.1,87.2 104.1,78.5 120.3,69.1"/><polygon class="gd-m-conc gd-f-front" points="4.5,29.8 104.1,87.2 104.1,78.5 4.5,21.0"/><polygon class="gd-m-conc gd-f-top" points="20.8,11.6 120.3,69.1 104.1,78.5 4.5,21.0"/><polygon class="gd-m-steel gd-f-side" points="30.7,67.9 29.4,68.6 29.4,36.1 30.7,35.4"/><polygon class="gd-m-steel gd-f-front" points="28.1,67.9 29.4,68.6 29.4,36.1 28.1,35.4"/><polygon class="gd-m-steel gd-f-top" points="29.4,34.6 30.7,35.4 29.4,36.1 28.1,35.4"/><polygon class="gd-m-steel2 gd-f-side" points="33.3,37.1 29.4,39.4 29.4,37.6 33.3,35.4"/><polygon class="gd-m-steel2 gd-f-front" points="25.5,37.1 29.4,39.4 29.4,37.6 25.5,35.4"/><polygon class="gd-m-steel2 gd-f-top" points="29.4,33.1 33.3,35.4 29.4,37.6 25.5,35.4"/><polygon class="gd-m-steel gd-f-side" points="63.2,86.6 61.9,87.4 61.9,54.9 63.2,54.1"/><polygon class="gd-m-steel gd-f-front" points="60.6,86.6 61.9,87.4 61.9,54.9 60.6,54.1"/><polygon class="gd-m-steel gd-f-top" points="61.9,53.4 63.2,54.1 61.9,54.9 60.6,54.1"/><polygon class="gd-m-steel2 gd-f-side" points="65.8,55.9 61.9,58.1 61.9,56.4 65.8,54.1"/><polygon class="gd-m-steel2 gd-f-front" points="58.0,55.9 61.9,58.1 61.9,56.4 58.0,54.1"/><polygon class="gd-m-steel2 gd-f-top" points="61.9,51.9 65.8,54.1 61.9,56.4 58.0,54.1"/><polygon class="gd-m-steel gd-f-side" points="95.7,105.4 94.4,106.1 94.4,73.6 95.7,72.9"/><polygon class="gd-m-steel gd-f-front" points="93.1,105.4 94.4,106.1 94.4,73.6 93.1,72.9"/><polygon class="gd-m-steel gd-f-top" points="94.4,72.1 95.7,72.9 94.4,73.6 93.1,72.9"/><polygon class="gd-m-steel2 gd-f-side" points="98.3,74.6 94.4,76.9 94.4,75.1 98.3,72.9"/><polygon class="gd-m-steel2 gd-f-front" points="90.5,74.6 94.4,76.9 94.4,75.1 90.5,72.9"/><polygon class="gd-m-steel2 gd-f-top" points="94.4,70.6 98.3,72.9 94.4,75.1 90.5,72.9"/><polygon class="gd-m-steel gd-f-side" points="108.4,114.1 101.9,117.9 101.9,113.5 108.4,109.8"/><polygon class="gd-m-steel gd-f-front" points="15.3,67.9 101.9,117.9 101.9,113.5 15.3,63.5"/><polygon class="gd-m-steel gd-f-top" points="21.8,59.8 108.4,109.8 101.9,113.5 15.3,63.5"/><line class="gd-leader-h" x1="92.4" y1="74.9" x2="156" y2="31.0"/><line class="gd-leader" x1="92.4" y1="74.9" x2="156" y2="31.0"/><line class="gd-leader-h" x1="93.3" y1="76.0" x2="156" y2="63.0"/><line class="gd-leader" x1="93.3" y1="76.0" x2="156" y2="63.0"/><line class="gd-leader-h" x1="93.7" y1="89.5" x2="156" y2="93.0"/><line class="gd-leader" x1="93.7" y1="89.5" x2="156" y2="93.0"/><line class="gd-leader-h" x1="97.6" y1="113.5" x2="156" y2="123.0"/><line class="gd-leader" x1="97.6" y1="113.5" x2="156" y2="123.0"/><circle class="gd-pt" cx="92.4" cy="74.9" r="2.4"/><circle class="gd-pt" cx="93.3" cy="76.0" r="2.4"/><circle class="gd-pt" cx="93.7" cy="89.5" r="2.4"/><circle class="gd-pt" cx="97.6" cy="113.5" r="2.4"/><text class="gd-t" x="160" y="34.0"><tspan x="160" dy="0">Fijación</tspan><tspan x="160" dy="9.5">al techo</tspan></text><text class="gd-t" x="160" y="66.0"><tspan x="160" dy="0">Techo</tspan></text><text class="gd-t" x="160" y="96.0"><tspan x="160" dy="0">Cuelga</tspan></text><text class="gd-t" x="160" y="126.0"><tspan x="160" dy="0">Perfil colgado,</tspan><tspan x="160" dy="9.5">a nivel</tspan></text></svg><figcaption>Las cuelgas fijadas al techo y, abajo, un perfil colgado de ellas a la altura marcada.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Perfiles que cargan el cielorraso</h4>
+              <div>
+                <p>Se fijan a la suspensión con tornillos de estructura N° 8 x 1/2 de pulgada. El primero va a 10 cm del borde del muro y los demás a 0,81 m entre ejes, una distancia que cambia según el proveedor de los perfiles. No tocan los muros: queda un hueco de dilatación de al menos 10 mm en cada extremo. Para cubrir áreas grandes, se empalman con un solape de 30 cm atornillado con 4 tornillos.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista en perspectiva de dos perfiles que cargan el cielorraso, colgados del techo, unidos con un solape atornillado y sin tocar las paredes" focusable="false"><polygon class="gd-m-conc gd-f-side" points="29.2,76.1 13.0,85.5 13.0,35.5 29.2,26.1"/><polygon class="gd-m-conc gd-f-front" points="6.5,81.8 13.0,85.5 13.0,35.5 6.5,31.8"/><polygon class="gd-m-conc gd-f-top" points="22.8,22.4 29.2,26.1 13.0,35.5 6.5,31.8"/><polygon class="gd-m-conc gd-f-side" points="122.3,129.9 106.1,139.2 106.1,89.2 122.3,79.9"/><polygon class="gd-m-conc gd-f-front" points="99.6,135.5 106.1,139.2 106.1,89.2 99.6,85.5"/><polygon class="gd-m-conc gd-f-top" points="115.9,76.1 122.3,79.9 106.1,89.2 99.6,85.5"/><polygon class="gd-m-conc gd-f-side" points="122.3,79.9 106.1,89.2 106.1,80.5 122.3,71.1"/><polygon class="gd-m-conc gd-f-front" points="6.5,31.8 106.1,89.2 106.1,80.5 6.5,23.0"/><polygon class="gd-m-conc gd-f-top" points="22.8,13.6 122.3,71.1 106.1,80.5 6.5,23.0"/><polygon class="gd-m-steel gd-f-side" points="41.4,59.2 40.1,60.0 40.1,39.4 41.4,38.6"/><polygon class="gd-m-steel gd-f-front" points="38.8,59.2 40.1,60.0 40.1,39.4 38.8,38.6"/><polygon class="gd-m-steel gd-f-top" points="40.1,37.9 41.4,38.6 40.1,39.4 38.8,38.6"/><polygon class="gd-m-steel gd-f-side" points="91.2,93.0 89.9,93.8 89.9,73.1 91.2,72.4"/><polygon class="gd-m-steel gd-f-front" points="88.6,93.0 89.9,93.8 89.9,73.1 88.6,72.4"/><polygon class="gd-m-steel gd-f-top" points="89.9,71.6 91.2,72.4 89.9,73.1 88.6,72.4"/><polygon class="gd-m-steel gd-f-side" points="82.3,85.5 78.0,88.0 78.0,83.6 82.3,81.1"/><polygon class="gd-m-steel gd-f-front" points="28.2,59.2 78.0,88.0 78.0,83.6 28.2,54.9"/><polygon class="gd-m-steel gd-f-top" points="32.5,52.4 82.3,81.1 78.0,83.6 28.2,54.9"/><polygon class="gd-m-steel2 gd-f-side" points="101.8,101.8 97.4,104.2 97.4,99.9 101.8,97.4"/><polygon class="gd-m-steel2 gd-f-front" points="60.6,83.0 97.4,104.2 97.4,99.9 60.6,78.6"/><polygon class="gd-m-steel2 gd-f-top" points="65.0,76.1 101.8,97.4 97.4,99.9 60.6,78.6"/><polygon class="gd-screw" points="64.2,82.9 64.0,82.2 63.6,81.6 63.1,81.3 62.6,81.4 62.5,81.9 62.6,82.6 63.1,83.2 63.6,83.5 64.0,83.4"/><polygon class="gd-hi" points="63.4,82.1 63.3,81.7 62.9,81.5 62.8,81.7 62.9,82.2 63.3,82.3"/><polygon class="gd-screw" points="67.5,84.8 67.3,84.1 66.9,83.5 66.3,83.1 65.9,83.3 65.7,83.8 65.9,84.4 66.3,85.0 66.9,85.4 67.3,85.2"/><polygon class="gd-hi" points="66.7,84.0 66.5,83.6 66.2,83.4 66.0,83.6 66.2,84.0 66.5,84.2"/><polygon class="gd-screw" points="70.7,86.6 70.5,85.9 70.1,85.3 69.6,85.0 69.1,85.1 69.0,85.6 69.1,86.3 69.6,86.9 70.1,87.2 70.5,87.1"/><polygon class="gd-hi" points="69.9,85.9 69.7,85.4 69.4,85.3 69.3,85.5 69.4,85.9 69.7,86.1"/><polygon class="gd-screw" points="74.0,88.5 73.8,87.8 73.4,87.2 72.8,86.9 72.4,87.0 72.2,87.5 72.4,88.2 72.8,88.8 73.4,89.1 73.8,89.0"/><polygon class="gd-hi" points="73.2,87.7 73.0,87.3 72.7,87.1 72.5,87.4 72.7,87.8 73.0,88.0"/><line class="gd-leader-h" x1="26.0" y1="53.0" x2="156" y2="33.0"/><line class="gd-leader" x1="26.0" y1="53.0" x2="156" y2="33.0"/><line class="gd-leader-h" x1="47.7" y1="68.3" x2="156" y2="63.0"/><line class="gd-leader" x1="47.7" y1="68.3" x2="156" y2="63.0"/><line class="gd-leader-h" x1="68.2" y1="85.2" x2="156" y2="99.0"/><line class="gd-leader" x1="68.2" y1="85.2" x2="156" y2="99.0"/><line class="gd-leader-h" x1="89.2" y1="85.2" x2="156" y2="121.0"/><line class="gd-leader" x1="89.2" y1="85.2" x2="156" y2="121.0"/><circle class="gd-pt" cx="26.0" cy="53.0" r="2.4"/><circle class="gd-pt" cx="47.7" cy="68.3" r="2.4"/><circle class="gd-pt" cx="68.2" cy="85.2" r="2.4"/><circle class="gd-pt" cx="89.2" cy="85.2" r="2.4"/><text class="gd-t" x="160" y="36.0"><tspan x="160" dy="0">Hueco contra</tspan><tspan x="160" dy="9.5">el muro</tspan></text><text class="gd-t" x="160" y="66.0"><tspan x="160" dy="0">Perfil que carga</tspan></text><text class="gd-t" x="160" y="102.0"><tspan x="160" dy="0">Empalme solapado</tspan><tspan x="160" dy="9.5">y atornillado</tspan></text><text class="gd-t" x="160" y="124.0"><tspan x="160" dy="0">Cuelga</tspan></text></svg><figcaption>Dos perfiles que cargan, colgados del techo y unidos con un empalme solapado atornillado. Los extremos no tocan las paredes: queda un hueco.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Perfiles donde se atornilla la placa</h4>
+              <div>
+                <p>Se colocan en sentido perpendicular a los anteriores, a 0,406 m o a 0,61 m entre ejes según el espesor y el tipo de placa. El primero va a 10 cm del extremo del muro y queda a 10 mm de la pared; tampoco se fijan al perímetro. Para cubrir áreas más largas que el perfil, se empalman con un solape mínimo de 20 cm y 4 tornillos de estructura N° 8 x 1/2 de pulgada, y las uniones entre perfiles se hacen con tornillos autoperforantes de ese mismo tipo. Si hace falta, se puede colocar lana de vidrio, que aísla térmica y acústicamente.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista desde abajo de la estructura del cielorraso, sin placas, con perfiles que cargan en un sentido y perfiles donde se atornilla la placa en el sentido perpendicular" focusable="false"><rect class="gd-room" x="12" y="12" width="136" height="114"/><rect class="gd-steel" x="22" y="38" width="116" height="6"/><rect class="gd-steel" x="22" y="70" width="116" height="6"/><rect class="gd-steel" x="22" y="102" width="116" height="6"/><rect class="gd-steel2" x="29.5" y="20" width="5" height="100"/><rect class="gd-steel2" x="53.5" y="20" width="5" height="100"/><rect class="gd-steel2" x="77.5" y="20" width="5" height="100"/><rect class="gd-steel2" x="101.5" y="20" width="5" height="100"/><rect class="gd-steel2" x="125.5" y="20" width="5" height="100"/><text class="gd-t" x="80" y="144" text-anchor="middle">Vista desde abajo, sin placas</text><line class="gd-leader-h" x1="136.0" y1="41.0" x2="156" y2="45.0"/><line class="gd-leader" x1="136.0" y1="41.0" x2="156" y2="45.0"/><line class="gd-leader-h" x1="128.0" y1="56.0" x2="156" y2="77.0"/><line class="gd-leader" x1="128.0" y1="56.0" x2="156" y2="77.0"/><line class="gd-leader-h" x1="143.0" y1="105.0" x2="156" y2="113.0"/><line class="gd-leader" x1="143.0" y1="105.0" x2="156" y2="113.0"/><circle class="gd-pt" cx="136.0" cy="41.0" r="2.4"/><circle class="gd-pt" cx="128.0" cy="56.0" r="2.4"/><circle class="gd-pt" cx="143.0" cy="105.0" r="2.4"/><text class="gd-t" x="160" y="48.0"><tspan x="160" dy="0">Perfil que carga</tspan></text><text class="gd-t" x="160" y="80.0"><tspan x="160" dy="0">Perfil donde se</tspan><tspan x="160" dy="9.5">atornilla la placa</tspan></text><text class="gd-t" x="160" y="116.0"><tspan x="160" dy="0">Separación</tspan><tspan x="160" dy="9.5">contra la pared</tspan></text></svg><figcaption>Vista desde abajo, sin placas: los perfiles donde se atornilla la placa van en sentido perpendicular a los que cargan, y ninguno toca la pared.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Colocación de las placas</h4>
+              <div>
+                <p>Las placas van perpendiculares a los perfiles y trabadas entre sí. Contra los muros se deja una separación de 12,7 mm, para que los esfuerzos de la pared no pasen al cielorraso, y nunca se fijan al ángulo perimetral. En cada unión se juntan dos bordes del mismo tipo: rectos con rectos o rebajados con rebajados.</p>
+                <p class="guia-ojo"><b>Ojo:</b> si entra luz rasante por ventanales o hay iluminación especial, las juntas se notan. Conviene decidir el sentido de las placas desde que se arma la estructura.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Vista desde abajo del cielorraso con las placas colocadas en sentido perpendicular a los perfiles, con las juntas trabadas y una separación contra los muros" focusable="false"><rect class="gd-room" x="12" y="12" width="136" height="114"/><rect class="gd-board" x="20" y="20" width="60" height="36"/><rect class="gd-board" x="80" y="20" width="60" height="36"/><rect class="gd-board" x="20" y="56" width="30" height="34"/><rect class="gd-board" x="50" y="56" width="60" height="34"/><rect class="gd-board" x="110" y="56" width="30" height="34"/><rect class="gd-board" x="20" y="90" width="60" height="28"/><rect class="gd-board" x="80" y="90" width="60" height="28"/><line class="gd-hid" x1="32" y1="16" x2="32" y2="122"/><line class="gd-hid" x1="56" y1="16" x2="56" y2="122"/><line class="gd-hid" x1="80" y1="16" x2="80" y2="122"/><line class="gd-hid" x1="104" y1="16" x2="104" y2="122"/><line class="gd-hid" x1="128" y1="16" x2="128" y2="122"/><line class="gd-leader-h" x1="125.0" y1="38.0" x2="156" y2="33.0"/><line class="gd-leader" x1="125.0" y1="38.0" x2="156" y2="33.0"/><line class="gd-leader-h" x1="143.0" y1="70.0" x2="156" y2="67.0"/><line class="gd-leader" x1="143.0" y1="70.0" x2="156" y2="67.0"/><line class="gd-leader-h" x1="110.0" y1="73.0" x2="156" y2="97.0"/><line class="gd-leader" x1="110.0" y1="73.0" x2="156" y2="97.0"/><line class="gd-leader-h" x1="128.0" y1="100.0" x2="156" y2="125.0"/><line class="gd-leader" x1="128.0" y1="100.0" x2="156" y2="125.0"/><circle class="gd-pt" cx="125.0" cy="38.0" r="2.4"/><circle class="gd-pt" cx="143.0" cy="70.0" r="2.4"/><circle class="gd-pt" cx="110.0" cy="73.0" r="2.4"/><circle class="gd-pt" cx="128.0" cy="100.0" r="2.4"/><text class="gd-t" x="160" y="36.0"><tspan x="160" dy="0">Placa</tspan></text><text class="gd-t" x="160" y="70.0"><tspan x="160" dy="0">Separación</tspan><tspan x="160" dy="9.5">contra el muro</tspan></text><text class="gd-t" x="160" y="100.0"><tspan x="160" dy="0">Juntas trabadas</tspan></text><text class="gd-t" x="160" y="128.0"><tspan x="160" dy="0">Perfiles por</tspan><tspan x="160" dy="9.5">detrás</tspan></text></svg><figcaption>Vista desde abajo: las placas colocadas en sentido perpendicular a los perfiles, que se ven punteados por detrás, con las juntas trabadas y una separación contra los muros.</figcaption></figure>
+            </li>
+            <li class="guia-step">
+              <h4>Corte y fijación</h4>
+              <div>
+                <p>El corte es el mismo que en la pared: cúter por la cara vista, quiebre desde atrás y borde lijado con un refilador o con lija de grano 80 a 100. Se usan placas de 1/2 pulgada o de 11 mm de espesor, fijadas con tornillos autoperforantes tipo drywall N° 6 x 1 pulgada, o más largos según el espesor. Los tornillos van como máximo cada 25 a 30 cm en el centro de la placa y cada 15 cm en los bordes que coinciden con un perfil, en zigzag. La cabeza queda apenas por debajo del nivel, sin romper el papel: para eso se regula el tope de profundidad del atornillador.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Una placa vista desde abajo con los tornillos más juntos en los bordes y más separados en el centro, en zigzag, y un detalle de la cabeza del tornillo apenas por debajo de la superficie" focusable="false"><rect class="gd-board" x="20" y="20" width="110" height="92"/><line class="gd-hid" x1="26" y1="22" x2="26" y2="110"/><line class="gd-hid" x1="75" y1="22" x2="75" y2="110"/><line class="gd-hid" x1="124" y1="22" x2="124" y2="110"/><circle class="gd-screw" cx="26" cy="28" r="1.9"/><circle class="gd-screw" cx="124" cy="28" r="1.9"/><circle class="gd-screw" cx="26" cy="40" r="1.9"/><circle class="gd-screw" cx="124" cy="40" r="1.9"/><circle class="gd-screw" cx="26" cy="52" r="1.9"/><circle class="gd-screw" cx="124" cy="52" r="1.9"/><circle class="gd-screw" cx="26" cy="64" r="1.9"/><circle class="gd-screw" cx="124" cy="64" r="1.9"/><circle class="gd-screw" cx="26" cy="76" r="1.9"/><circle class="gd-screw" cx="124" cy="76" r="1.9"/><circle class="gd-screw" cx="26" cy="88" r="1.9"/><circle class="gd-screw" cx="124" cy="88" r="1.9"/><circle class="gd-screw" cx="26" cy="100" r="1.9"/><circle class="gd-screw" cx="124" cy="100" r="1.9"/><circle class="gd-screw" cx="72" cy="34" r="1.9"/><circle class="gd-screw" cx="78" cy="58" r="1.9"/><circle class="gd-screw" cx="72" cy="82" r="1.9"/><circle class="gd-screw" cx="78" cy="106" r="1.9"/><rect class="gd-board" x="160" y="94" width="64" height="14"/><rect class="gd-screw" x="190" y="96" width="2" height="16"/><rect class="gd-screw" x="186" y="96" width="10" height="2.4"/><text class="gd-t" x="160" y="122">Cabeza apenas<tspan x="160" dy="9.5">por debajo de la</tspan><tspan x="160" dy="9.5">superficie</tspan></text><line class="gd-leader-h" x1="124.0" y1="34.0" x2="156" y2="27.0"/><line class="gd-leader" x1="124.0" y1="34.0" x2="156" y2="27.0"/><line class="gd-leader-h" x1="78.0" y1="58.0" x2="156" y2="59.0"/><line class="gd-leader" x1="78.0" y1="58.0" x2="156" y2="59.0"/><circle class="gd-pt" cx="124.0" cy="34.0" r="2.4"/><circle class="gd-pt" cx="78.0" cy="58.0" r="2.4"/><text class="gd-t" x="160" y="30.0"><tspan x="160" dy="0">Bordes: tornillos</tspan><tspan x="160" dy="9.5">más juntos</tspan></text><text class="gd-t" x="160" y="62.0"><tspan x="160" dy="0">Centro: más</tspan><tspan x="160" dy="9.5">separados,</tspan><tspan x="160" dy="9.5">en zigzag</tspan></text></svg><figcaption>Una placa vista desde abajo, con los tornillos más juntos en los bordes que coinciden con un perfil y más separados en el centro, en zigzag. A la derecha, el detalle de la cabeza del tornillo, apenas por debajo de la superficie.</figcaption></figure>
+            </li>
+            <li class="guia-step guia-step--long">
+              <h4>Juntas y acabado</h4>
+              <div>
+                <p>Antes de empezar se define el nivel de acabado, que va de 0 a 5. Para acortar los tiempos de secado se combinan masilla en polvo (2 partes de polvo por 1 de agua, hasta lograr una consistencia pastosa) y masilla en pasta.</p>
+                <p><b>Nivel 0.</b> Placa atornillada, sin acabado.</p>
+                <p><b>Nivel 1.</b> Encintado de juntas y ángulos: una capa abundante de masilla en polvo de 10 cm de ancho con espátula de 4 o 5 pulgadas, la cinta de papel presionada enseguida sobre la junta, y se retiran los excesos. Se deja secar.</p>
+                <p><b>Nivel 2.</b> Una capa de masilla en polvo de 20 a 25 cm de ancho sobre la junta y los ángulos interiores, una sobre las cabezas de los tornillos y una sobre los accesorios (esquineros, dilataciones). Se retiran los excesos de los lados.</p>
+                <p><b>Nivel 3.</b> Con masilla en pasta, dos capas sobre la junta y los ángulos, dos sobre las cabezas de los tornillos y dos sobre los accesorios.</p>
+                <p><b>Nivel 4.</b> Una tercera capa de masilla en pasta de unos 30 a 35 cm. En los bordes rectos de las placas va una capa de 30 cm de ancho a cada lado de la unión. Las cabezas de los tornillos y los accesorios reciben las mismas capas que las juntas.</p>
+                <p><b>Nivel 5.</b> Masillado de toda la superficie.</p>
+                <p>Después se lija con grano 150, se aplica un primer en toda la superficie y se pinta. Si se usa solo masilla en pasta, los pasos son los mismos y entre capa y capa se esperan unas 12 horas.</p>
+                <p class="guia-ojo"><b>Ojo:</b> donde entra luz rasante se recomienda el nivel 5, que incluye el masillado general de toda la superficie.</p>
+              </div>
+              <figure class="guia-fig"><svg class="gd" viewBox="0 0 270 150" role="img" aria-label="Seis cortes de una unión entre placas: sin acabado, con la cinta sola y con una, dos y tres capas de masilla, y con toda la superficie masillada" focusable="false"><rect class="gd-board" x="12" y="16.0" width="66" height="6"/><rect class="gd-board" x="82" y="16.0" width="66" height="6"/><circle class="gd-screw" cx="30" cy="16.8" r="1.3"/><circle class="gd-screw" cx="118" cy="16.8" r="1.3"/><line class="gd-line" x1="150" y1="19.0" x2="157" y2="19.0"/><text class="gd-t" x="160" y="14.3"><tspan x="160" dy="0">Nivel 0: sin</tspan><tspan x="160" dy="9.5">acabado</tspan></text><rect class="gd-board" x="12" y="39.6" width="66" height="6"/><rect class="gd-board" x="82" y="39.6" width="66" height="6"/><rect class="gd-tape" x="54" y="38.2" width="52" height="1.3"/><line class="gd-line" x1="150" y1="42.6" x2="157" y2="42.6"/><text class="gd-t" x="160" y="44.8"><tspan x="160" dy="0">Nivel 1: cinta</tspan></text><rect class="gd-board" x="12" y="63.2" width="66" height="6"/><rect class="gd-board" x="82" y="63.2" width="66" height="6"/><rect class="gd-tape" x="54" y="61.800000000000004" width="52" height="1.3"/><path class="gd-putty2" d="M64 61.800000000000004 Q80 56.6 96 61.800000000000004 Z"/><line class="gd-line" x1="150" y1="66.2" x2="157" y2="66.2"/><text class="gd-t" x="160" y="68.4"><tspan x="160" dy="0">Nivel 2: 1 capa</tspan></text><rect class="gd-board" x="12" y="86.80000000000001" width="66" height="6"/><rect class="gd-board" x="82" y="86.80000000000001" width="66" height="6"/><rect class="gd-tape" x="54" y="85.4" width="52" height="1.3"/><path class="gd-putty1" d="M56 85.4 Q80 76.2 104 85.4 Z"/><path class="gd-putty2" d="M64 85.4 Q80 80.2 96 85.4 Z"/><line class="gd-line" x1="150" y1="89.80000000000001" x2="157" y2="89.80000000000001"/><text class="gd-t" x="160" y="92.0"><tspan x="160" dy="0">Nivel 3: 2 capas</tspan></text><rect class="gd-board" x="12" y="110.4" width="66" height="6"/><rect class="gd-board" x="82" y="110.4" width="66" height="6"/><rect class="gd-tape" x="54" y="109.0" width="52" height="1.3"/><path class="gd-putty2" d="M48 109.0 Q80 95.8 112 109.0 Z"/><path class="gd-putty1" d="M56 109.0 Q80 99.8 104 109.0 Z"/><path class="gd-putty2" d="M64 109.0 Q80 103.8 96 109.0 Z"/><line class="gd-line" x1="150" y1="113.4" x2="157" y2="113.4"/><text class="gd-t" x="160" y="115.6"><tspan x="160" dy="0">Nivel 4: 3 capas</tspan></text><rect class="gd-board" x="12" y="134.0" width="66" height="6"/><rect class="gd-board" x="82" y="134.0" width="66" height="6"/><rect class="gd-tape" x="54" y="132.6" width="52" height="1.3"/><rect class="gd-putty2" x="12" y="131.6" width="136" height="2.4"/><path class="gd-putty2" d="M48 131.6 Q80 118.39999999999999 112 131.6 Z"/><path class="gd-putty1" d="M56 131.6 Q80 122.39999999999999 104 131.6 Z"/><path class="gd-putty2" d="M64 131.6 Q80 126.39999999999999 96 131.6 Z"/><line class="gd-line" x1="150" y1="137.0" x2="157" y2="137.0"/><text class="gd-t" x="160" y="132.3"><tspan x="160" dy="0">Nivel 5: toda la</tspan><tspan x="160" dy="9.5">superficie</tspan></text></svg><figcaption>Los seis niveles de acabado de una unión entre placas, del 0 al 5, con su cantidad de capas de masilla. Los espesores están exagerados para que se vean.</figcaption></figure>
+            </li>
+          </ol>
+        </div>
+
+        <p class="build-note guia-note">Guía orientativa. Las cifras vienen de guías de instalación publicadas y pueden cambiar según el producto. Los materiales, las medidas y las separaciones los definen el proyecto y el fabricante de cada producto. Conviene que la colocación la haga un instalador con experiencia.</p>
+      </div>
+    </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== RESUMEN COMPARATIVA ==================== -->
+  <section class="home-compare">
     <div class="container">
       <div class="section-header-row">
         <div class="section-title-wrap">
-          <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-          <span class="section-title-accent"></span>
+          <h2 class="section-title">Qué gana una obra al construirse en seco</h2>
         </div>
       </div>
 
-      <div class="testimonials-grid">
-        <!-- Testimonio 1 -->
-        <div class="testimonial-card">
-          <div class="testimonial-quote-icon">“</div>
-          <p class="testimonial-text">Excelente calidad y cumplimiento. El resultado superó nuestras expectativas. La prolijidad en el montaje del cielo raso y las terminaciones de yeso son impecables.</p>
-          <div class="testimonial-footer">
-            <div>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <div class="testimonial-author">María G.</div>
-              <span class="testimonial-location">Puerto Libertad</span>
-            </div>
-            <span style="color: var(--text-dim); font-size: 1.2rem;">→</span>
-          </div>
+      <div class="mini-compare">
+        <div class="mini-row">
+          <h3>Plazos de obra</h3>
+          <p class="col-h"><span class="mini-tag">En húmedo</span>Hay que esperar el fraguado y el secado de las mezclas.</p>
+          <p class="col-s"><span class="mini-tag">En seco</span>Se atornilla sin tiempos de secado y las etapas se encadenan.</p>
         </div>
-
-        <!-- Testimonio 2 -->
-        <div class="testimonial-card">
-          <div class="testimonial-quote-icon">“</div>
-          <p class="testimonial-text">Profesionales, prolijos y muy buena comunicación durante toda la obra. Cumplieron con el presupuesto sin costos ocultos y dentro de las fechas fijadas.</p>
-          <div class="testimonial-footer">
-            <div>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <div class="testimonial-author">Lucas R.</div>
-              <span class="testimonial-location">Puerto Esperanza</span>
-            </div>
-            <span style="color: var(--text-dim); font-size: 1.2rem;">→</span>
-          </div>
+        <div class="mini-row">
+          <h3>Agua y limpieza</h3>
+          <p class="col-h"><span class="mini-tag">En húmedo</span>Usa agua y deja escombros, polvo y barro.</p>
+          <p class="col-s"><span class="mini-tag">En seco</span>No usa agua y deja menos residuos y polvo.</p>
         </div>
-
-        <!-- Testimonio 3 -->
-        <div class="testimonial-card">
-          <div class="testimonial-quote-icon">“</div>
-          <p class="testimonial-text">Soluciones prácticas y un trabajo impecable. Armaron la estructura de Steel Frame en tiempo récord para nuestra ampliación. 100% recomendados en el norte de Misiones.</p>
-          <div class="testimonial-footer">
-            <div>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <div class="testimonial-author">Carolina M.</div>
-              <span class="testimonial-location">Misiones</span>
-            </div>
-            <span style="color: var(--text-dim); font-size: 1.2rem;">→</span>
-          </div>
+        <div class="mini-row">
+          <h3>Peso sobre la estructura</h3>
+          <p class="col-h"><span class="mini-tag">En húmedo</span>Los muros de ladrillo u hormigón son pesados y exigen fundaciones que los soporten.</p>
+          <p class="col-s"><span class="mini-tag">En seco</span>Perfiles y placas pesan menos y reducen las cargas sobre las fundaciones.</p>
+        </div>
+        <div class="mini-row">
+          <h3>Aislación térmica y acústica</h3>
+          <p class="col-h"><span class="mini-tag">En húmedo</span>Depende del espesor y del material del muro, y para mejorarla hay que sumar capas.</p>
+          <p class="col-s"><span class="mini-tag">En seco</span>El hueco se rellena con lana de vidrio o de roca y, con doble placa, se logra buena aislación.</p>
+        </div>
+        <div class="mini-row">
+          <h3>Modificaciones</h3>
+          <p class="col-h"><span class="mini-tag">En húmedo</span>Mover o abrir un muro implica demoler y rehacer, con escombros y obra húmeda.</p>
+          <p class="col-s"><span class="mini-tag">En seco</span>Los tabiques que no cargan se pueden desmontar o cambiar de lugar.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== CONTACTO ==================== -->
-  <section id="contacto">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- Contact Details & Form -->
-        <div class="contact-info-card">
-          <span class="contact-tag">Contacto</span>
-          <h2 class="contact-headline">Hablemos de tu próximo proyecto.</h2>
-
-          <div class="contact-details-list">
-            <!-- Dirección -->
-            <div class="contact-detail-row">
-              <div class="contact-icon-box">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <span>Puerto Libertad, Misiones, Argentina</span>
-            </div>
-
-            <!-- Email -->
-            <a href="mailto:info@nexosistemas.com.ar" class="contact-detail-row">
-              <div class="contact-icon-box">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              </div>
-              <span>info@nexosistemas.com.ar</span>
-            </a>
-
-            <!-- Web -->
-            <a href="https://www.nexosistemas.com.ar" target="_blank" rel="noopener" class="contact-detail-row">
-              <div class="contact-icon-box">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-              </div>
-              <span>www.nexosistemas.com.ar</span>
-            </a>
-
-            <!-- Teléfono / WhatsApp -->
-            <a href="https://wa.me/5493757679600" target="_blank" rel="noopener" class="contact-detail-row">
-              <div class="contact-icon-box" style="color: #25d366; border-color: rgba(37, 211, 102, 0.3);">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
-              </div>
-              <span>+54 9 3757 679600</span>
-            </a>
-          </div>
-
-          <!-- CTAs -->
-          <div class="contact-cta-buttons">
-            <button class="btn-primary-red trigger-presupuesto">
-              <span>Presupuestar Ahora</span>
-            </button>
-            <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Deseo%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn-primary-whatsapp">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
-              <span>WhatsApp Directo</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Stylized Map Card -->
-        <div class="contact-map-card">
-          <div class="map-embed-container">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28646.611101901053!2d-54.605335182903565!3d-25.921319208759604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f70624a87ad653%3A0x6b7ca28e75db7b70!2sPuerto%20Libertad%2C%20Misiones!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" 
-              width="100%" 
-              height="100%" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Ubicación NEXO en Puerto Libertad, Misiones">
-            </iframe>
-          </div>
-          <div class="map-overlay-badge">
-            <div class="map-badge-left">
-              <span class="map-pin-red">📍</span>
-              <div>
-                <div class="map-badge-city">Puerto Libertad</div>
-                <div class="map-badge-prov">Misiones, Argentina</div>
-              </div>
-            </div>
-            <a href="https://maps.google.com/?q=Puerto+Libertad+Misiones" target="_blank" rel="noopener" class="btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.68rem;">
-              <span>Cómo Llegar</span> →
-            </a>
-          </div>
-        </div>
+  <!-- ==================== NORMAS ==================== -->
+  <!-- ==================== LLAMADO FINAL ==================== -->
+  <section class="cta-band on-dark">
+    <div class="container cta-band-inner">
+      <h2 class="cta-title">Contanos qué querés construir.</h2>
+      <div class="cta-actions">
+        <a href="contacto.html" class="btn-primary-red">
+          <span>Ir a contacto</span>
+        </a>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-row">
-        <!-- Logo -->
-        <a href="#inicio" class="footer-brand-logo" aria-label="NEXO Sistemas Constructivos">
-          <img src="assets/images/logo.png" alt="NEXO Sistemas Constructivos" class="footer-logo-img">
+        <a href="index.html" class="footer-brand-logo" aria-label="NEXO Sistemas Constructivos, inicio">
+          <img width="400" height="200" src="assets/images/logo-small.png" alt="NEXO Sistemas Constructivos" class="footer-logo-img">
+          <img width="400" height="200" src="assets/images/logo-light-small.png" alt="" aria-hidden="true" class="footer-logo-img logo-for-light">
         </a>
 
-        <!-- Footer Nav -->
-        <div class="footer-nav">
-          <a href="#inicio" class="footer-nav-link">Inicio</a>
-          <a href="#servicios" class="footer-nav-link">Servicios</a>
-          <a href="#obras" class="footer-nav-link">Obras</a>
-          <a href="#nosotros" class="footer-nav-link">Nosotros</a>
-          <a href="#contacto" class="footer-nav-link">Contacto</a>
-        </div>
+        <nav class="footer-nav" aria-label="Pie de página">
+          <a href="index.html" class="footer-nav-link">Inicio</a>
+          <a href="nosotros.html" class="footer-nav-link">Nosotros</a>
+          <a href="contacto.html" class="footer-nav-link">Contacto</a>
+        </nav>
 
-        <!-- Social Icons -->
         <div class="footer-socials">
-          <a href="#" class="social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="#" class="social-btn" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-          </a>
-          <a href="#" class="social-btn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          </a>
-          <a href="https://wa.me/5493757679600" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+          <a href="mailto:info@nexosistemas.com.ar" class="social-btn" aria-label="Correo electrónico">
+            <svg aria-hidden="true" style="fill:none;stroke:currentColor"><use href="#i-mail"/></svg>
           </a>
         </div>
       </div>
 
       <div class="footer-bottom-row">
         <div>© 2026 NEXO Sistemas Constructivos. Todos los derechos reservados.</div>
-        <div class="footer-slogan">CONSTRUIMOS SOLUCIONES. CONECTAMOS POSIBILIDADES.</div>
+        <div>Construimos Soluciones. Conectamos Posibilidades.</div>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== MODAL: SOLICITAR PRESUPUESTO ==================== -->
-  <div class="modal-overlay" id="modal-presupuesto">
-    <div class="modal-box">
-      <button class="modal-close-btn" aria-label="Cerrar ventana">✕</button>
-      <h3 class="modal-title">Cotizador de Presupuesto</h3>
-      <p class="modal-subtitle">Configurá los detalles de tu proyecto para obtener un estimado y coordinar el relevamiento técnico.</p>
-
-      <form id="form-presupuesto">
-        <div class="form-group">
-          <label class="form-label" for="calc-name">Tu Nombre y Apellido</label>
-          <input type="text" id="calc-name" class="form-control" placeholder="Ej: Martín Rodríguez" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="calc-service">Tipo de Servicio</label>
-          <select id="calc-service" class="form-control">
-            <option value="steel_frame">Construcción en Steel Frame</option>
-            <option value="placas_yeso">Tabiquería & Paredes de Yeso</option>
-            <option value="cielorrasos">Cielorrasos Acústicos & Desniveles LED</option>
-            <option value="remodelacion">Remodelación Comercial / Residencial</option>
-            <option value="llave_en_mano">Proyecto Integral Llave en Mano</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Superficie Estimada (m²)</label>
-          <div class="form-range-wrap">
-            <input type="range" id="calc-area" min="15" max="450" step="5" value="80">
-            <span class="range-val-badge" id="calc-area-val">80 m²</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="calc-location">Localidad del Proyecto</label>
-          <select id="calc-location" class="form-control">
-            <option value="Puerto Libertad">Puerto Libertad, Misiones</option>
-            <option value="Puerto Esperanza">Puerto Esperanza, Misiones</option>
-            <option value="Wanda">Colonia Wanda, Misiones</option>
-            <option value="Puerto Iguazú">Puerto Iguazú, Misiones</option>
-            <option value="Eldorado">Eldorado, Misiones</option>
-            <option value="Posadas">Posadas, Misiones</option>
-            <option value="Otra localidad">Otra localidad</option>
-          </select>
-        </div>
-
-        <!-- Dynamic Estimated Price Range Box -->
-        <div class="quote-preview-box">
-          <div>
-            <div class="quote-preview-title">Rango Estimado Orientativo</div>
-            <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">Sujeto a cálculo estructural final</div>
-          </div>
-          <div class="quote-preview-price" id="calc-price-est">$30.240 - $38.640 USD</div>
-        </div>
-
-        <button type="button" class="btn-primary-whatsapp" id="btn-send-calc-ws" style="width: 100%; justify-content: center;">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
-          <span>Enviar Presupuesto por WhatsApp</span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL: GUARDAR CONTACTO ==================== -->
-  <div class="modal-overlay" id="modal-contacto-vcard">
-    <div class="modal-box" style="text-align: center;">
-      <button class="modal-close-btn" aria-label="Cerrar ventana">✕</button>
-      <div class="modal-logo-wrap">
-        <img src="assets/images/logo.png" alt="NEXO Sistemas Constructivos" class="modal-logo-img">
-      </div>
-
-      <h3 class="modal-title">Guardar Ficha de Contacto</h3>
-      <p class="modal-subtitle">Descargá nuestra tarjeta digital (vCard) directamente a tu agenda de contactos o escaneá con tu celular.</p>
-
-      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.8rem; text-align: left;">
-        <div style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 4px;">NEXO Sistemas Constructivos</div>
-        <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">Construcción en Seco & Steel Frame</div>
-        <div style="font-size: 0.85rem; color: #d1d8e2; line-height: 1.6;">
-          📞 <strong>Tel:</strong> +54 9 3757 679600<br>
-          ✉️ <strong>Email:</strong> info@nexosistemas.com.ar<br>
-          🌐 <strong>Web:</strong> www.nexosistemas.com.ar<br>
-          📍 <strong>Zona:</strong> Puerto Libertad, Misiones
-        </div>
-      </div>
-
-      <button type="button" class="btn-primary-red" id="btn-download-vcard" style="width: 100%; justify-content: center; padding: 1rem;">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        <span>Descargar Contacto (.VCF)</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ==================== MODAL: DETALLES DE OBRA ==================== -->
-  <div class="modal-overlay" id="modal-obra-detail">
-    <div class="modal-box" style="max-width: 780px;">
-      <button class="modal-close-btn" aria-label="Cerrar ventana">✕</button>
-      <div style="border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 1.5rem; max-height: 380px;">
-        <img id="modal-obra-img" src="" alt="Detalle de Obra" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
-        <div>
-          <h3 class="modal-title" id="modal-obra-title" style="margin-bottom: 4px;">Título de Obra</h3>
-          <span style="color: var(--text-muted); font-size: 0.85rem;" id="modal-obra-location">Ubicación</span>
-        </div>
-        <div style="display: flex; gap: 10px;">
-          <span class="obra-tag" style="background: rgba(255, 43, 62, 0.15); border: 1px solid rgba(255, 43, 62, 0.3); padding: 4px 10px; border-radius: 4px; color: #ff4d5d;" id="modal-obra-area">120 m²</span>
-        </div>
-      </div>
-
-      <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1.5rem;">
-        <span style="font-family: var(--font-heading); font-size: 0.7rem; color: var(--accent-cyan); letter-spacing: 0.1em; text-transform: uppercase;">Sistema Utilizado:</span>
-        <div style="color: #ffffff; font-weight: 600; font-size: 0.95rem; margin-top: 2px;" id="modal-obra-system">Steel Frame</div>
-      </div>
-
-      <p style="color: #c4cdd8; font-size: 0.92rem; line-height: 1.6; margin-bottom: 2rem;" id="modal-obra-desc">
-        Descripción de la obra.
-      </p>
-
-      <div style="display: flex; justify-content: flex-end; gap: 1rem;">
-        <a id="modal-obra-ws-link" href="#" target="_blank" rel="noopener" class="btn-primary-whatsapp">
-          <span>Quiero una obra similar</span> →
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
-  <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Me%20contacto%20desde%20la%20página%20web." target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Escribinos por WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.276.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.155.57 4.175 1.564 5.927l-1.657 6.059 6.223-1.632c1.696.924 3.633 1.446 5.87 1.446 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
-    <span>WhatsApp</span>
+  <!-- ==================== WHATSAPP FLOTANTE ==================== -->
+  <a href="https://wa.me/5493757679600?text=Hola%20NEXO!%20Vi%20su%20p%C3%A1gina%20y%20quiero%20consultar%20por%20una%20obra." target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
   </a>
 
-  <!-- Main JavaScript File -->
-  <script src="js/main.js"></script>
+  <script src="js/viewer3d.js?v=d7078329"></script>
+  <script src="js/main.js?v=b4b537bf"></script>
 </body>
 </html>

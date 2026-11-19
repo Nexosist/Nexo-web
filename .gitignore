@@ -15,3 +15,18 @@ desktop.ini
 # Temporary files
 *.tmp
 *.log
+
+# Lo que NO se publica en el sitio oficial (GitHub Pages sube todo el repositorio)
+computo.html
+js/computo.js
+herramientas/
+construccion-en-seco.html
+colocacion-de-placas.html
+seco-vs-humedo.html
+
+# Archivos que ninguna página publicada usa hoy (quedan en la carpeta, no se suben)
+assets/images/obra-steelframe.jpg
+assets/images/placas-apiladas.jpg
+assets/images/corte-placa.jpg
+assets/images/terminacion-pared.jpg
+assets/images/2d/platea-*.webp
